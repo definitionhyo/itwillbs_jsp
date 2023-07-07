@@ -1,0 +1,19 @@
+package svc;
+
+public class BoardDeleteProService {
+
+	public boolean isBoardWriter(int board_num, String board_pass) {
+		System.out.println("isBoardWriter( board_num, board_pass)");
+		boolean check = false;
+		
+		if() {
+			
+		}
+		
+		
+		
+		
+		return check;
+	}
+
+}

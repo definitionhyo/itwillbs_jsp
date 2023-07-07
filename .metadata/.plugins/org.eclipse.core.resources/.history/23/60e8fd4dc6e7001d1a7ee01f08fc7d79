@@ -1,0 +1,52 @@
+package dao;
+
+import java.sql.Connection;
+
+import vo.MemberBean;
+
+// 실제 비즈니스 로직을 수행하는 MemberDAO 클래스 정의
+// => 각 Service 클래스 인스턴스에서 MemberDAO 인스턴스에 접근 시 고유 데이터가 불필요하므로
+//    MemberDAO 인스턴스는 애플리케이션에서 단 하나만 생성하여 공유해도 된다!
+//    따라서, 싱글톤 디자인 패턴을 적용하여 클래스를 정의하면
+//    하나의 인스턴스를 모두가 공유하므로 메모리 낭비를 최소화 할 수 있다!
+public class MemberDAO {
+	private MemberDAO() {}
+	
+	private static MemberDAO instance = new MemberDAO();
+	
+	public static MemberDAO getInstance() {
+		return instance;
+	}
+	private Connection con;
+
+	public void setConnection(Connection con) {
+		this.con = con;
+	}
+	
+	public int insertMember(MemberBean member) {
+		System.out.println("MemberDAO - insertMember()");
+		
+		
+		return 0; // => MemberJoinProService 로 리턴
+	}
+	
+	
+	
+	
+	
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

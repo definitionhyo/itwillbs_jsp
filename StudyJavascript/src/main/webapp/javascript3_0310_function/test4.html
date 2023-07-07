@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- 외부 자바스크립트 파일 test4.js 불러오기 -->
+<script src="test4.js"></script>
+<script type="text/javascript">
+	/*
+	3. 매개변수만 있고, 리턴값은 없는 함수
+	- 외부에서 함수 호출 시 전달할 데이터가 있는 함수
+	- 리턴값 존재 유무와 무관함
+	- 자바의 메서드와 기본 형태는 유사하나 매개변수 선언 시 변수명만 기술(데이터타입 기술X)
+	- 매개변수의 갯수 및 타입은 제한 없음
+	
+	< 기본 문법 >
+	function 함수명(매개변수명1, 매개변수명2, ..., 매개변수명n) {
+		// 함수 호출 시 실행될 코드들..
+		// 매개변수에 저장된 데이터는 함수 내에서 자유롭게 사용 가능
+	}
+	*/
+	
+	// 출력할 메세지를 함수에 전달인자로 전달하여 매개변수(파라미터) data 에 저장 후
+	// 해당 데이터를 출력하는 함수 showMessage() 정의
+	function showMessage(data) {
+		// 외부로부터 전달받은 1개의 전달인자가 변수 data 에 저장되며 함수 내에서 사용 가능
+		document.write("<h3>" + data + " : " + typeof(data) + "</h3>");
+	}
+	
+	// showMessage() 함수 호출하여 전달인자로 각각 다른 타입 데이터 1개 전달
+	showMessage("Hello, World!"); // Hello, World! : string
+	showMessage(10); // 10 : number
+	showMessage(true); // true : boolean
+	// 자바스크립트에서 파라미터가 있는 함수 호출 시
+	// 전달인자(데이터)가 없더라도 오류가 발생하지 않고 undefined 값으로 설정됨
+	showMessage(); // undefined : undefined
+	// 파라미터가 1개인 함수에 전달인자 2개를 전달 시 첫번째 전달인자만 변수에 저장됨
+	showMessage(100, 200); // 100 : number
+	
+	document.write("<hr>");
+	// -------------------------------------------------------------------------------
+	// 전달인자로 정수를 전달받아 사용하는 callSister() 함수 정의
+	// => 파라미터명 : money
+	function callSister(money) { // 전달받은 데이터는 매개변수 money 에 저장됨
+		document.write("동생 : 오빠가 과자 사먹으라고 " + money + " 원을 줬다!<br>");
+		// 변수 money 값을 200 만큼 감소
+		money -= 200;
+		document.write("동생 : 과자 사먹고 " + money + " 원이 남았다!<br>");
+	}
+	
+	document.write("동생아! 200원 줄테니 과자 사먹어라!<br>");
+	// callSister() 함수를 호출하여 전달인자로 정수 200 전달
+	// 1) 데이터를 직접 전달하는 방법
+// 	callSister(200);
+	// 2) 데이터를 변수에 저장 후 전달하는 방법
+	let myMoney = 300;
+	callSister(myMoney);	
+	document.write("<hr>");
+	// -------------------------------------------------------------------------------
+	// 파라미터가 2개 이상인 함수 정의
+	// => showMessage2() 함수 정의(문자열 1개(str), 정수 1개(count) 전달)
+	function showMessage2(str, count) {
+		// for문을 사용하여 문자열 str 을 count 변수만큼 반복 출력
+		// ex) "Hello, World", 5 전달되면 "Hello, World!" 문자열을 5번 반복 출력
+		for(let i = 1; i <= count; i++) {
+			document.write(i + " : " + str + "<br>");
+		}
+	}
+	
+	// showMessage2() 함수 호출
+	// => 전달인자 : "Hello, World!" 문자열과 정수 5
+	//    복수개의 전달인자는 콤마(,)로 구분
+	showMessage2("Hello, World!", 5); // "Hello, World!" 문자열 5번 반복 출력 
+	showMessage2("Hello, World!", 3); // "Hello, World!" 문자열 3번 반복 출력
+	document.write("<hr>");
+	// -------------------------------------------------------------------------------
+	// 전달받은 데이터가 없을 경우 함수에서 매개변수에 기본값을 설정하는 방법(2가지)
+	// 1. 함수 선언 시 매개변수에 기본값을 직접 지정하는 방법
+	function showMessage3(data = "전달받은 데이터 없음") {
+		document.write("<h3>" + data + " : " + typeof(data) + "</h3>");
+	}
+	
+	showMessage3("Hello, World!"); // Hello, World! : string(전달되는 데이터를 사용)
+	// 전달인자가 없을 경우 기본값으로 설정된 값을 사용함
+	showMessage3(); // 전달받은 데이터 없음 : string
+	document.write("<hr>");
+	
+	// 2. 함수 내에서 if문을 사용하여 값이 없을 경우(= undefined) 기본값을 지정
+	function showMessage4(data) {
+		// 전달받은 값(data)가 undefined 인지 판별
+		if(data == undefined) {
+			data = "전달받은 데이터 없음222";
+		}
+		
+		document.write("<h3>" + data + " : " + typeof(data) + "</h3>");
+	}
+	
+	showMessage4("Hello, World!"); // Hello, World! : string(전달되는 데이터를 사용)
+	// 전달인자가 없을 경우 기본값으로 설정된 값을 사용함
+	showMessage4(); // 전달받은 데이터 없음 : string
+	document.write("<hr>");
+	
+	// =====================================================================
+	// 정수 2개(num1, num2)를 전달받아 합계 계산 후 출력하는 함수 sum() 정의
+	function sum(num1, num2) {
+// 		document.write(num1 + " + " + num2 + " = " + (num1 + num2));
+
+		let total = num1 + num2;
+		document.write(num1 + " + " + num2 + " = " + total);
+	}
+	
+	// sum() 함수를 호출하여 10, 20 전달 => 10 + 20 = 30 출력되어야 정상
+	sum(10, 20);
+	document.write("<hr>");
+	
+	// =====================================================================
+	// test4.js 파일의 login() 함수를 호출하여 아이디와 패스워드 전달
+	login("admin", "1234");
+	login("admin", "1111");
+	login("hong", "1234");
+</script>
+</head>
+<body>
+	
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

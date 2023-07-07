@@ -1,0 +1,39 @@
+<%@page import="jsp10_jdbc_dao.StudentDTO"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%
+// DbcpSelectServlet 클래스로부터 전달받은 request 객체 내에 저장되어 있는
+// StudentDTO 객체를 꺼내서 변수에 저장하기
+// => request 객체의 getAttribute() 메서드를 호출하여 속성명("student") 지정
+//    리턴타입이 Object 타입이므로 StudentDTO 타입 다운캐스팅 필수!
+StudentDTO student = (StudentDTO)request.getAttribute("student");
+out.println(student);
+%>    
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>select.jsp</h1>
+	<table border="1">
+		<tr>
+			<th>번호</th>
+			<th>이름</th>
+		</tr>
+		
+	</table>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

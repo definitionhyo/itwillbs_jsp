@@ -1,0 +1,55 @@
+package svc;
+
+import java.sql.Connection;
+
+import dao.BoardDAO;
+import dao.MemberDAO;
+import db.JdbcUtil;
+import vo.BoardBean;
+import vo.MemberBean;
+
+
+public class BoardWriteProService {
+
+	public boolean registBoard(BoardBean board) {
+		
+			
+			boolean isWriteSuccess = false;
+			Connection con = JdbcUtil.getConnection();
+			
+			BoardDAO dao = BoardDAO.getInstance();
+			
+			dao.setConnection(con);
+			
+			int insertCount = dao.insertBoard(board);
+			
+			if(insertCount > 0) { // 성공 시
+				JdbcUtil.commit(con);
+				
+				isWriteSuccess = true;
+			} else { // 실패 시
+				JdbcUtil.rollback(con);
+			}
+			
+			JdbcUtil.close(con);
+			
+			return isWriteSuccess; // => MemberJoinProAction
+		
+		return false;
+	}
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+

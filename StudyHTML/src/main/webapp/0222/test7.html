@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>이미지 표시 연습</h1>
+	<!-- 
+	서버(또는 컴퓨터) 상의 자원에 접근하기 위해 대상을 지정할 때(ex. 하이퍼링크, 이미지 태그 등)
+	대상의 위치를 절대 경로 및 상대 경로 지정 방식으로 지정 가능
+	1. 절대 경로 : 어느 위치에서 시작하더라도 무조건 접근 가능한 경로
+	               주로, 인터넷 상의 URL 이 절대 경로 사용 
+	               ex) http://www.itwillbs.co.kr/
+	               ex) D:/Shared/JSP/workspace_jsp5/StudyHTML/src/main/webapp/0222/test6_result.html
+	2. 상대 경로 : 자신의 현재 위치에 따라 상대적으로 변하는 경로
+	               1) 최상위 경로 : /
+	               2) 현재 경로 : ./ (경로 생략 시 기본값)
+	               3) 상위 경로 : ../
+	               4) 하위 경로 : 경로명
+	-->
+	
+	<!-- 
+	이미지 표시를 위한 img 태그
+	기본 문법 : <img src="표시할 이미지 경로 및 파일명" 옵션...> 
+	-->
+	
+	<!-- img 태그를 사용하여 같은 위치의 1.jpg 이미지 표시 -->
+	<img src="1.jpg"> <!-- 상대경로 ./ 생략 시 현재 위치 지정 -->
+	<img src="./1.jpg"> <!-- 현재 위치를 의미하는 ./ 사용 -->
+	<hr>
+	<!-- 현재 디렉토리의 하위 디렉토리인 0222_image 에 위치한 2.jpg 이미지 표시 -->
+	<img src="0222_image/2.jpg">
+	<hr>
+	<!-- 현재 디렉토리의 상위 디렉토리인 webapp 에 위치한 delete.png 이미지 표시 -->
+	<img src="../delete.png">
+	<hr>
+	<!-- 현재 디렉토리 상위 디렉토리인 webapp 내의 images 에 위치한 mov12.jpg 이미지 표시 -->
+	<img src="../images/mov12.jpg">
+	<hr>
+	<!-- 웹 상의 이미지 표시 -->
+	<img src="http://www.itwillbs.co.kr/css/wvtex/img/wvUser/busan/logo.png">
+	
+	<hr>
+	
+	<!-- img 태그의 alt 속성 지정 시 이미지 접근 불가능할 경우 대체 텍스트로 표시됨 -->
+	<img src="1.jpg" alt="이미지를 불러올 수 없습니다">
+	<img src="2.jpg" alt="이미지를 불러올 수 없습니다"> <!-- 대체 텍스트 표시됨(경로 틀림) -->
+	<hr>
+	<!-- img 태그의 width 속성은 가로 크기, height 속성은 세로 크기 지정(단위 : 픽셀) -->
+	<img src="1.jpg" width="200" height="300">
+	
+	<hr>
+	<!-- 하이퍼링크를 사용하여 webapp/images/mov12.jpg 이미지 표시 -->
+	<h1><a href="../images/mov12.jpg">쥬라기공원 포스터를 보려면 클릭하세요</a></h1>
+	<h1><a href="D:/Shared/JSP/mov12.jpg">쥬라기공원 포스터를 보려면 클릭하세요</a></h1>
+	
+	<!-- 절대 경로 또는 상대 경로가 잘못 지정됐을 경우 해당 파일 접근 불가! -->
+	<h1><a href="D:/Shared/mov12.jpg">쥬라기공원 포스터를 보려면 클릭하세요(잘못된 위치)</a></h1>
+	
+	<!-- 상대 경로 중 최상위 경로를 의미하는 / 사용 시 현재 경로에서 최상위 경로로 이동 -->
+	<!-- ex) 현재 실습 파일이 D 드라이브 상에 존재할 경우 최상위 경로는 "D:/ice.jpg" -->
+	<h1><a href="/ice.jpg">최상위 경로(D드라이브)의 ice.jpg</a></h1>
+	
+	<h1><a href="/images/mov12.jpg">쥬라기공원 포스터를 보려면 클릭하세요(안열림)</a></h1>
+	<!-- 최상위 경로에 images 디렉토리가 없으므로 파일이 열리지 않음 -->
+	<!-- D:/images/mov12.jpg -->
+	
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

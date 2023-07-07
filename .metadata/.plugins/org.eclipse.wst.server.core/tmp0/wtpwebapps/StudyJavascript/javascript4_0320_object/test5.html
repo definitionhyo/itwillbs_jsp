@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	/*
+	[ window 객체의 하위 객체 - location ]
+	- 페이지 이동 관련 정보를 관리하는 객체(= 페이지 이동 관련 작업 담당)
+	- window 객체의 하위 객체이므로 window.location.xxx 형식으로 접근해야하지만
+	  보통 window 객체명은 생략하고 location.xxx 형식으로 사용
+	- 페이지 관련 속성(변수) 및 메서드가 제공됨
+	- 주로 사용하는 속성 : location.href (=> URL(주소) 정보 관리)
+	*/
+	
+	function func1() {
+		// 현재 웹브라우저 주소 표시줄 정보 확인을 위해 location 객체의 href 속성값 확인
+		alert(location.href); // alert(window.location.href) 과 동일(window 객체 생략)
+		// => http://localhost:8080/StudyJavascript/javascript4_0320_object/test5.html
+	}
+	
+	function func2() {
+		// URL 정보(주소) 변경을 위해 location 객체의 href 속성값 변경
+// 		location.href = "http://www.itwillbs.co.kr";
+		// => 우변에 지정된 주소로 페이지 이동(= HTML 의 하이퍼링크(<a href=""></a>)와 동일)
+		
+		// 웹 사이트 주소 대신 특정 파일 지정도 가능
+		location.href = "../javascript4_0315_object/test4.html";
+	}
+	
+	function func3() {
+		// URL 정보 새로고침을 위해 location 객체의 reload() 메서드 호출
+		// => URL 정보에 저장된 페이지 다시 로딩 = 웹브라우저의 새로고침(F5) 과 동일한 기능
+		location.reload();
+		// => 새로고침 결과 확인을 위해 새로고침 전 텍스트 박스에 텍스트 입력해야함
+	}
+	
+	// 장바구니 담기 버튼과 즉시구매 버튼을 각각 다른 함수로 처리하는 경우
+	// => 처리하는 작업이 대부분 동일할 경우 중복되는 코드가 발생할 수 있음
+	function cart() {
+		// 장바구니에 담을 상품 정보와 사용자 정보를 가져오는 작업...(중복코드)
+		
+		// 장바구니 담기 페이지로 이동(파일명의 cart 만 제외하면 중복코드)
+		location.href = "test5_cart.html";
+	}
+	
+	function order() {
+		// 즉시구매 페이지로 전달할 상품 정보와 사용자 정보를 가져오는 작업...(중복코드)
+		
+		// 즉시구매 페이지로 이동(파일명의 order 만 제외하면 중복코드)
+		location.href = "test5_order.html";
+	}
+	
+	function func4(target) { // 'cart' 또는 'order' 문자열 전달됨(작업 구분용 문자열)
+		// 장바구니 담기와 즉시구매 버튼을 하나의 함수로 처리하는 경우
+		// => 중복되는 코드를 제거하여 유지 보수성을 향상시킬 수 있다!
+		// => 이동할 페이지 구별을 위해 문자열 전달받아 저장할 매개변수 1개(target) 선언
+		// ----------------------------------------------------
+		// 장바구니에 담을 상품 정보와 사용자 정보를 가져오는 작업...(중복코드)
+		// 즉시구매 페이지로 전달할 상품 정보와 사용자 정보를 가져오는 작업...(중복코드)
+		// => 두 작업은 동일한 코드이므로 한 번만 작성하면 된다!
+		
+		// 상품 정보와 사용자 정보를 가져오는 작업 = 코드 중복 제거
+		
+		// ---------------------------------------------------------------
+		// 페이지로 이동하는 작업 => cart 또는 order 를 구별해야한다!
+		// 1) if문을 사용하여 두 문자열을 구별하여 이동하는 방법
+// 		if(target == 'cart') {
+// 			location.href = "test5_cart.html";
+// 		} else if(target == 'order') {
+// 			location.href = "test5_order.html";
+// 		}
+		
+		// 2) 문자열 결합을 통해 전달받은 문자열을 파일명의 일부로 사용
+		location.href = "test5_" + target + ".html";
+		
+	}
+	
+</script>
+</head>
+<body>
+	<h1>test5.html - location</h1>
+	<input type="button" value="URL 정보 확인" onclick="func1()"><br>
+	<input type="button" value="URL 정보 변경" onclick="func2()"><br>
+	<!-- 버튼 클릭 시 직접 location.href 속성으로 페이지 이동 가능 -->
+	<!-- 주의! 큰 따옴표 내에서 또 다른 따옴표 사용해야할 경우 작은따옴표로 대체(반대도 동일) -->
+	<input type="button" value="URL 정보 변경2" onclick="location.href = 'http://www.naver.com'"><br>
+	<input type="button" value="URL 정보 새로고침" onclick="func3()">
+	<input type="text" placeholder="URL 새로고침 확인용 값 입력"><br>
+	<hr>
+	<input type="button" value="장바구니 담기" onclick="location.href = 'test5_cart.html'">
+	<input type="button" value="즉시구매" onclick="location.href = 'test5_order.html'"><br>
+	
+<!-- 	<input type="button" value="장바구니 담기2" onclick="cart()"> -->
+<!-- 	<input type="button" value="즉시구매2" onclick="order()"><br> -->
+	
+	<!-- 복수개의 버튼을 하나의 함수로 연결하여 각 작업 구별을 통해 다른 페이지로 이동 -->
+	<!-- 함수 호출 시 파라미터로 각 페이지 구분을 위한 정보를 다르게 전달 -->
+	<!-- 장바구니 담기 페이지 : test5_cart.html, 즉시구매 페이지 : test5_order.html -->
+	<!-- 이 중 cart 와 order 를 구별하면 나머지는 동일하게 처리 가능 -->
+	<input type="button" value="장바구니 담기2" onclick="func4('cart')">
+	<input type="button" value="즉시구매2" onclick="func4('order')"><br>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

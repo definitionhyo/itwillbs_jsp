@@ -1,0 +1,63 @@
+package jsp08_jdbc;
+
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/jsp08_jdbc/JdbcConnect3_SELECT")
+public class JdbcConnect3SelectServlet extends HttpServlet {
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("JdbcConnect3SelectServlet");
+		
+		try {
+			// 1단계. JDBC 드라이버 로드
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			System.out.println("드라이버 로드 성공!");
+			
+			// 2단계. DB 연결
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/study_jsp5", "root", "1234");
+			System.out.println("DB 연결 성공!");
+			
+			// 3단계. SQL 구문 작성 및 전달
+			// jsp08_student 테이블의 모든 레코드 검색 - SELECT
+			String sql = "SELECT * FROM jsp08_student";
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			
+			// 4단계. SQL 구문 실행 및 결과 처리
+			// => PreparedStatement 객체의 executeQuery() 메서드를 호출하여
+			//    SELECT 구문 실행 후 리턴되는 결과값을 java.sql.ResultSet 타입으로 저장
+			ResultSet rs = pstmt.executeQuery();
+			/*
+			 SELECT 구문 성공 시 다음 형태의 테이블이 ResultSet 타입 객체로 리턴됨
+			 조회 결과 테이블의 특정 레코드를 가리키는 포인터 역할을 커서(Cursor)라고 함
+	         (커서가 위치한 레코드의 데이터(컬럼)에만 접근이 가능함)
+	         => 커서를 아래쪽으로 한 줄씩 이동하면서 각 레코드에 접근해야함
+		     +------+--------+
+		     | idx  | name   | <- 현재 커서(Cursor) 위치(항상 첫번째 레코드 위에 위치)
+		     +------+--------+
+		     |    1 | 홍길동 |
+		     |    2 | 이순신 |
+		     +------+--------+
+			 */
+			
+			
+		} catch (ClassNotFoundException e) {
+			System.out.println("드라이버 로드 실패!");
+			e.printStackTrace();
+		} catch (SQLException e) {
+			System.out.println("DB 연결 실패!");
+			e.printStackTrace();
+		}
+	}
+
+}

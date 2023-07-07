@@ -1,0 +1,27 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%!
+// 이 곳은 JSP 선언문(Declaration) 으로 JSP 파일 전체(= 전역)에서 접근 가능한
+// 멤버변수 및 메서드를 선언하는 곳입니다.
+// => 자바 클래스 내의 멤버레벨(클래스 내부, 메서드 외부)의 변수 및 메서드 위치와 동일
+// 1. 멤버변수 선언
+String str = "멤버변수입니다.";
+
+// 2. 메서드 정의
+// 2-1. 리턴값이 없는 메서드
+public void method1() {
+	System.out.println("선언문의 method1() 메서드 호출됨!");
+}
+
+// 2-2. 리턴값이 있는 메서드
+%>    
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+</body>
+</html>

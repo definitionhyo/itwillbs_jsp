@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	// document 객체는 HTML 문서 자체의 정보를 담고 있으며, 문서의 시작을 가리킴
+	// => DOM(Document Object Model, 문서 객체 모델)의 진입점 역할 수행하는 객체
+	// => document 객체를 통해 문서의 구성요소(Element)에 접근 가능(단계별 접근도 가능)
+	document.write("document 객체 : " + document + "<br>");
+	// => [object HTMLDocument] : HTML 문서 자체를 관리하는 객체
+	
+	document.write("document.documentElement 객체 : " + document.documentElement + "<br>");
+	// => [object HTMLHtmlElement] : <html> 태그를 관리하는 객체
+	
+	document.write("document.head 객체 : " + document.head + "<br>");
+	// => [object HTMLHeadElement] : <head> 태그를 관리하는 객체
+	
+	document.write("document.body 객체 : " + document.body + "<br>");
+	// => [object HTMLBodyElement] : <body> 태그를 관리하는 객체
+</script>
+</head>
+<body>
+	<h1>test8.html</h1>
+	<input type="button" value="버튼">
+	
+	body 태그 내의 script 시작 전
+	<br>
+	<script type="text/javascript">
+		
+	</script>
+	<br>
+	body 태그 내의 script 종료 후
+</body>
+</html>
+
+
+
+
+
+
+

@@ -1,0 +1,97 @@
+package controller;
+
+import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import action.MemberJoinProAction;
+import action.MemberLoginProAction;
+import vo.ActionForward;
+
+@WebServlet("*.me")
+public class MemberFrontController extends HttpServlet {
+	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("MemberFrontController");
+		request.setCharacterEncoding("UTF-8");
+		
+		ActionForward forward = null;  // 공통으로 사용할 변수
+		
+		
+		//서블릿 주소 추출하기
+		String command = request.getServletPath();
+		System.out.println("command : " + command);
+		
+		if(command.equals("/MemberJoinForm.me")) {
+			System.out.println("회원가입 폼!");
+			
+//			RequestDispatcher dispatcher = request.getRequestDispatcher("member/member_join_form.jsp");
+//			dispatcher.forward(request, response);
+			
+			forward = new ActionForward();
+			
+		} else if(command.equals("/MemberLoginForm.me")) {
+			System.out.println("회원로그인 폼!");
+			
+			RequestDispatcher dispatcher = request.getRequestDispatcher("member/member_login_form.jsp");
+			dispatcher.forward(request, response);
+			
+		} else if(command.equals("/MemberJoinPro.me")) {
+			MemberJoinProAction action = new MemberJoinProAction();
+			forward =  action.execute(request, response);
+			
+			
+			
+		} else if(command.equals("/MemberLoginPro.me")) {
+			MemberLoginProAction action = new MemberLoginProAction();
+//			action.excute(request, response);
+			
+		}
+		
+		
+		
+		
+	}
+	
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doProcess(request, response);
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doProcess(request, response);
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

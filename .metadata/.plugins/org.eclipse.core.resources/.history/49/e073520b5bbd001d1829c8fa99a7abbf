@@ -1,0 +1,9 @@
+/**
+ * 
+ */
+
+// 구구단 2단을 출력하는 gugudan() 함수 정의
+function gugudan() {
+	let dan = 2;
+	document.write(" < " + dan + "단 >");
+}

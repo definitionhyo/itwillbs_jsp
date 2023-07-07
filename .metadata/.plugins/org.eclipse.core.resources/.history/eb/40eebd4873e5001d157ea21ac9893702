@@ -1,0 +1,28 @@
+package controller;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import action.Action;
+import vo.ActionForward;
+
+public class BoardWriteProAction implements Action {
+
+	@Override
+	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
+		System.out.println("BoardWriteProAction");
+		//forward 객체? 만들고
+		ActionForward forward = null;
+		
+		
+		//forward 인스턴스 만들고
+		forward = new ActionForward();
+		
+		
+		//set으로 주소, 포워딩방식
+		
+		
+		return null;
+	}
+
+}

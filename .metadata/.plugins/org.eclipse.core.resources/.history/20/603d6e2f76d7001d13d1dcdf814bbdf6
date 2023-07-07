@@ -1,0 +1,67 @@
+package jsp08_jdbc;
+
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/jsp08_jdbc/JdbcConnect3_INSERT")
+public class JdbcConnect3InsertServlet extends HttpServlet {
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("JdbcConnect3InsertServlet");
+		
+		try {
+			// 0단계. JDBC 연결에 필요한 문자열을 각각의 변수에 저장
+			String driver = "com.mysql.cj.jdbc.Driver";
+			String url = "jdbc:mysql://localhost:3306/study_jsp5";
+			String user = "root";
+			String password = "1234";
+			
+			// 1단계. JDBC 드라이버 로드
+			Class.forName(driver);
+			System.out.println("드라이버 로드 성공!");
+			
+			// 2단계. DB 연결
+			// => DB 연결 성공 시 java.sql.Connecion 타입 객체 리턴됨
+			//    (DB 접속 정보를 관리하는 객체)
+			Connection con = DriverManager.getConnection(url, user, password);
+			System.out.println("DB 연결 성공!");
+			
+			/*
+			 -----------------------------------------------------------------			// 2단계까지는 DB 제품별로 정보(문자열)가 달라지는 부분이며
+			 3단계부터는 실제 DB 내의 SQL 구문을 실행하므로 공통 작업에 해당함
+			 -----------------------------------------------------------------
+			 study_jsp5.jsp08_student 테이블 생성
+			 => 번호(idx, 정수), 이름(name, 문자 16자)
+			 CREATE TABLE jsp08_student (
+			 	idx INT,
+			 	name VARCHAR(16)
+			 );
+			 */
+			// --------------------------------------------------------------------
+			// 3단계. SQL 구문 작성 및 전달
+			// - student 테이블에 번호(idx)와 이름(name) 추가하는 INSERT 구문 작성
+			//   임의의 데이터 : 번호 - 1, 이름 - '홍길동'
+			String sql = "INSERT INTO student VALUES (1, '홍길동')";
+			// - Connection 객체의 prepareStatement() 메서드를 호출하여 SQL 구문 전달
+			//   => 파라미터 : SQL 구문(문자열)   리턴타입 : java.sql.PreparedStatement
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			
+		} catch (ClassNotFoundException e) {
+			System.out.println("드라이버 로드 실패!");
+			e.printStackTrace();
+		} catch (SQLException e) {
+			System.out.println("DB 연결 실패!");
+			e.printStackTrace();
+		}
+	}
+
+}

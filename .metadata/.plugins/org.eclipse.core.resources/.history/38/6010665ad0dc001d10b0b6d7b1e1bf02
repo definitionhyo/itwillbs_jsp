@@ -1,0 +1,10 @@
+package jsp10_jdbc_dao;
+
+/*
+ CREATE TABLE jsp10_board (
+ 	
+ );
+ */
+public class BoardDTO {
+
+}

@@ -1,0 +1,58 @@
+package action;
+
+import java.io.IOException;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import vo.ActionForward;
+
+// FrontController 를 보조할 Action 클래스 정의
+// => 공통된 메서드 execute() 를 직접 정의하지 않고
+//    Action 인터페이스를 상속받아 추상메서드 execute() 를 오버라이딩(구현)
+public class MemberJoinProAction implements Action {
+
+	// 프론트 컨트롤러(MemberFrontContoller)로부터 호출받아
+	// 회원가입 비즈니스 로직을 수행할 execute() 메서드 정의
+	// => 컨트롤러 역할을 수행하므로 FrontController 와 마찬가지로 request, response 객체 필요
+	// => 파라미터 : HttpServletRequest(request), HttpServletResponse(response) 객체
+	// => 리턴타입 : vo.ActionForward
+	// => 추상메서드를 갖는 Action 인터페이스를 implements 했으므로 메서드 오버라이딩 필수!
+	@Override
+	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
+		System.out.println("MemberJoinProAction");
+		
+		String name = request.getParameter("name");
+		System.out.println("이름 : " + name);
+		
+		// 회원 가입 비즈니스 로직 수행했다고 가정
+		boolean isJoinSuccess = false;
+		
+		// 가입 작업 결과 판별
+		if(!isJoinSuccess) { // 가입 실패
+			// 메인페이지로 디스패치(포워딩) 정보를 저장한 후 컨트롤러로 전달(리턴)
+			
+		} else { // 가입 성공
+			// 메인페이지로 리다이렉트 정보를 저장한 후 컨트롤러로 전달(리턴)
+			
+		}
+		
+		return URL 과 포워딩 방식;
+		
+	}
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

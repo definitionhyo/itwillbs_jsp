@@ -1,0 +1,38 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%
+// 세션에 저장된 "sId" 라는 속성값을 가져와서 String 타입 변수 id 에 저장
+%>    
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div align="right">
+		<h4>
+			<%--
+			로그인 성공/실패에 따른 작업 수행(= 서로 다른 링크 표시)
+			- 세션 아이디(sId)가 없을 경우(null) 로그인, 회원가입 링크 표시
+			-          ""        있을 경우(null 이 아님) 세션 아이디, 로그아웃 링크 표시
+			--%>
+			
+			<a href="sessionTest3_main.jsp">HOME</a> |
+			<a href="sessionTest3_loginForm.jsp">로그인</a> |
+			<a href="sessionTest3_joinForm.jsp">회원가입</a>
+		</h4>
+	</div>
+	<div align="center">
+		<h1>메인화면</h1>
+	</div>
+</body>
+</html>
+
+
+
+
+
+
+
+

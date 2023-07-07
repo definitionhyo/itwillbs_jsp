@@ -1,0 +1,34 @@
+package jsp07_servlet;
+
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+// 컨텍스트 루트(= 프로젝트명) 뒤의 경로 및 서블릿 주소를 모두 지정하여 매핑
+// ex) http://localhost:8080/StudyJSP/jsp07_servlet/jsp07_login
+//                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~ => 매핑할 주소
+@WebServlet("/jsp07_servlet/jsp07_login")
+public class LoginServlet extends HttpServlet {
+	// POST 방식 요청만 처리할 경우 doGet() 메서드는 불필요
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("LoginServlet");
+		
+		// 폼에서 입력받아 전달된 아이디와 패스워드 파라미터 가져와서 변수에 저장 후 출력
+		// => request 객체의 getParameter() 메서드 활용
+		// => request 객체는 doXXX() 메서드 호출 시 톰캣에 의해 자동으로 전달됨
+	}
+
+}
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,42 @@
+package action;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import svc.BoardDetailService;
+import svc.BoardModifyProService;
+import vo.ActionForward;
+import vo.BoardBean;
+
+public class BoardModifyProAction implements Action {
+
+	@Override
+	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
+System.out.println("BoardModifyProAction");
+		
+		ActionForward forward = null;
+		
+		// 폼 파라미터 데이터를 BoardBean 객체에 저장
+		// => 파일 업로드 작업이 없으므로(폼태그에 enctype="multipart/form-data" 가 아님)
+		//    request.getParameter() 메서드 호출
+		BoardBean board = new BoardBean();
+		board.setBoard_num(Integer.parseInt(request.getParameter("board_num")));
+		board.setBoard_name(request.getParameter("board_name"));
+		board.setBoard_pass(request.getParameter("board_pass"));
+		board.setBoard_subject(request.getParameter("board_subject"));
+		board.setBoard_content(request.getParameter("board_content"));
+		System.out.println(board);
+		System.out.println(request.getParameter("board_pass"));
+		
+		BoardModifyProService service = new BoardModifyProService();
+		
+		// ActionForward 객체를 사용하여 상세정보 조회 페이지(BoardDetail.bo)로 리다이렉트
+		// => 파라미터 : 글번호, 페이지번호
+		forward = new ActionForward();
+		forward.setPath("BoardDetail.bo?board_num=" + board.getBoard_num() + "&pageNum=" + request.getParameter("pageNum"));
+		forward.setRedirect(true);
+		
+		return forward;
+	}
+
+}

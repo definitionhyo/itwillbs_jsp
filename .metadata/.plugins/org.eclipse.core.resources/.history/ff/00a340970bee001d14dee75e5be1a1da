@@ -1,0 +1,30 @@
+package vo;
+
+//페이징 처리에 사용되는 정보를 저장 (DTO역할)
+public class PageInfo {
+	private int listCount;     // 총 게시물 수
+	private int pageListLimit; //
+	private int maxPage;
+	private int startPage;
+	private int endPage;
+	
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>test14.html - form 태그 이벤트 </h1>
+	<form action="test14_2.html" name="fr">
+		<!--
+		form 태그 내의 입력 요소에 required 속성 지정 시
+		해당 항목이 입력되지 않은 상태로 submit 동작이 수행되지 않는다! (입력 요청 발생)
+		-->
+		아이디 <input type="text" name="id" required="required">
+	</form>
+</body>
+</html>

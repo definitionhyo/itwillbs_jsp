@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;final_exam.html&apos; to &apos;javascript_final&apos;&#x0D;&#x0A;- Original project: &apos;StudyHTML&apos;&#x0D;&#x0A;- Destination element: &apos;javascript_final&apos;&#x0D;&#x0A;- Original element: &apos;final_exam.html&apos;" description="Copy file" element1="src/main/webapp/0224/final_exam.html" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1679629674016" target="/StudyJavascript/src/main/webapp/javascript_final" units="0" version="1.0"/>
+</session>

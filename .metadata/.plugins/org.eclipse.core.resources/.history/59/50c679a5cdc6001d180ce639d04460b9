@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	// document 객체는 HTML 문서 자체의 정보를 담고 있으며, 문서의 시작을 가리킴
+	// => DOM(Document Object Model, 문서 객체 모델)의 진입점 역할 수행하는 객체
+	// => document 객체를 통해 문서의 구성요소(Element)에 접근 가능(단계별 접근도 가능)
+	document.write("document 객체 : " + document + "<br>");
+	// => [object HTMLDocument] : HTML 문서 자체를 관리하는 객체
+	
+	document.write("document.documentElement 객체 : " + document.documentElement + "<br>");
+	// => [object HTMLHtmlElement] : <html> 태그를 관리하는 객체
+	
+	document.write("document.head 객체 : " + document.head + "<br>");
+	// => [object HTMLHeadElement] : <head> 태그를 관리하는 객체
+	
+	document.write("document.body 객체 : " + document.body + "<br>");
+	// => [object HTMLBodyElement] : <body> 태그를 관리하는 객체
+</script>
+</head>
+<body>
+	<h1>test8.html</h1>
+	<input type="button" value="버튼">
+	
+	body 태그 내의 script 시작 전
+	<br>
+	<script type="text/javascript">
+		// <body> 태그 내의 각 자식 요소들을 차례대로 접근
+		// => document 객체 내에 생성된 body 객체를 통해 
+		//    childNodes 객체에 접근 시 body 객체 내의 자식 노드에 접근 가능
+		//    ex) document.body.childNodes 지정 시 자식노드 배열에 접근
+		// => 이 때, 각 객체 내의 자식 노드는 배열 구조로 관리되며
+		//    자식 노드의 배열 크기를 인덱스로 활용하여 모든 자식 노드를 차례대로 접근 가능
+		let nodes = "";
+		for(let i = 0; i < document.body.childNodes.length; i++) {
+			nodes += document.body.childNodes[i] + " : " + 
+						document.body.childNodes[i].nodeName + "\n";
+		}
+	</script>
+	<br>
+	body 태그 내의 script 종료 후
+</body>
+</html>
+
+
+
+
+
+
+

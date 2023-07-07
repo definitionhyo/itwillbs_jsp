@@ -1,0 +1,62 @@
+package action;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import vo.ActionForward;
+
+public class MemberJoinProAction implements Action{
+
+	@Override
+	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
+		System.out.println("MemberJoinProAction");
+		
+		String name = request.getParameter("name");
+		System.out.println("이름 : " + name);
+		
+		boolean isJoinSuccess = false;
+		
+		if(!isJoinSuccess) {
+			
+		} else {
+			
+		}
+		
+		return;
+	}
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

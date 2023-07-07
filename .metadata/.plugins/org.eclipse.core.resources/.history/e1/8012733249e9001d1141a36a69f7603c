@@ -1,0 +1,37 @@
+package svc;
+
+import java.sql.Connection;
+
+import dao.MemberDAO;
+import db.JdbcUtil;
+import vo.MemberBean;
+
+public class MemberLoginProService {
+	
+	public boolean isCorrectUser(MemberBean member) {
+		// 1. 작업 결과를 리턴할 변수 선언
+		boolean isCorrectUser = false;
+		
+		// 2. JdbcUtil 객체로부터 Connection Pool 에 저장된 Connection 객체 가져오기(공통)
+		// => 트랜잭션 처리를 Service 객체가 수행하므로
+		//    DAO 가 아닌 Service 객체가 Connection 객체를 관리해야함
+		Connection con = JdbcUtil.getConnection();
+		
+		// 3. MemberDAO 클래스로부터 MemberDAO 객체 가져오기(공통)
+		// => 싱글톤 디자인 패턴으로 구현되어 있는 객체를 getInstance() 메서드로 리턴받기
+//				MemberDAO dao = new MemberDAO(); // The constructor MemberDAO() is not visible
+		MemberDAO dao = MemberDAO.getInstance();
+		
+		// 4. MemberDAO 객체의 setConnection() 메서드를 호출하여 Connection 객체 전달(공통)
+		dao.setConnection(con);
+		
+		
+		
+		// 7. Connection Pool 로부터 가져온 Connection 자원(객체) 반환(공통)
+		//    => 주의! DAO 객체에서 Connection 객체 반환(close()) 금지!
+		JdbcUtil.close(con);
+		
+		return isCorrectUser;
+	}
+
+}

@@ -1,0 +1,34 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>includeForm.jsp</h1>
+	<hr>
+	<%-- includePro.jsp 페이지를 include 액션태그로 포함시키기 --%>
+	<%-- pageContext.include() 메서드와 동일 --%>
+<%-- 	<jsp:include page="includePro.jsp" /> --%>
+	<%-- 포함시킬 페이지에서 사용할 파라미터 전달 시 jsp:param 액션태그 활용 --%>
+	<jsp:include page="includePro.jsp">
+		<jsp:param name="paramValue" value="Parameter Value"/>
+	</jsp:include>
+	<hr>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

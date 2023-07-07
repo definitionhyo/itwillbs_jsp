@@ -1,0 +1,68 @@
+package action;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import svc.MemberLoginProService;
+import vo.ActionForward;
+import vo.MemberBean;
+
+public class MemberLoginProAction implements Action {
+
+	@Override
+	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
+		System.out.println("MemberLoginProAction");
+		
+		ActionForward forward = null;
+		
+		MemberBean member = new MemberBean();
+		member.setId(request.getParameter("id"));
+		member.setPasswd(request.getParameter("passwd"));
+//		System.out.println(member);
+		
+		MemberLoginProService service = new MemberLoginProService();
+		boolean isCorrectUser = service.isCorrectUser(member);
+		
+		if(!isCorrectUser) {
+			response.setContentType("text/html; charset=UTF-8");
+			
+			try {
+				PrintWriter out = response.getWriter();
+				
+				out.print("<script>");
+				out.print("alert('회원가입 실패!');");
+				out.print("history.back();");
+				out.print("</script>");
+				out.flush();
+				
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			
+		} else {
+			forward = new ActionForward();
+			forward.setPath("./");
+			forward.setRedirect(true);
+		}
+		
+		
+		return forward;
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

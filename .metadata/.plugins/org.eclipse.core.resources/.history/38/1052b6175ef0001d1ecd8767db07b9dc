@@ -1,0 +1,36 @@
+package action;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.tomcat.util.digester.SystemPropertySource;
+
+import dao.BoardDAO;
+import svc.BoardDeleteProService;
+import svc.BoardDetailService;
+import vo.ActionForward;
+import vo.BoardBean;
+
+public class BoardDeleteProAction implements Action {
+
+	@Override
+	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
+		System.out.println("BoardDeleteProAction");
+		
+		ActionForward forward = null;
+		
+		int board_num = Integer.parseInt(request.getParameter("board_num"));
+		String board_pass = request.getParameter("board_pass");
+//		System.out.println(board_num + board_pass);
+		
+		BoardDeleteProService service = new BoardDeleteProService();
+		boolean check = service.isBoardWriter(board_num, board_pass);
+		
+		forward = new ActionForward();
+		forward.setPath("BoardList.bo?pageNum=" + request.getParameter("pageNum"));
+		forward.setRedirect(true);
+		
+		return forward;
+	}
+
+}

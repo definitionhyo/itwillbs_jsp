@@ -1,0 +1,32 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>sessionTest2_get.jsp</h1>
+	<h3>세션값 1 : <%=session.getAttribute("sessionValue1") %></h3>
+	<h3>세션값 2 : <%=session.getAttribute("sessionValue2") %></h3>
+	<hr>
+	<%
+	// session.getAttribute() 메서드의 리턴타입은 Object 이므로
+	// 리턴값을 변수에 저장 시에는 타입에 맞는 형변환 연산자를 사용하여 다운캐스팅이 필요
+	String str1 = session.getAttribute("sessionValue1");
+	
+	%>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

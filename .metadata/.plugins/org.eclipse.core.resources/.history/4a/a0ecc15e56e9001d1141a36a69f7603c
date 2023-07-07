@@ -1,0 +1,15 @@
+package svc;
+
+import vo.MemberBean;
+
+public class MemberInfoService {
+
+	public MemberBean getMember(String id) {
+		MemberBean member = null;
+		
+		
+		
+		return member;
+	}
+
+}

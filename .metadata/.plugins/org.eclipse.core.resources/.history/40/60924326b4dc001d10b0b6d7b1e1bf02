@@ -1,0 +1,78 @@
+package jsp10_jdbc_dao;
+
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/jsp10_jdbc_dao/DbcpInsertPro")
+public class DbcpInsertProServlet extends HttpServlet {
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("DbcpInsertProServlet");
+		
+		// 번호(idx)와 이름(name) 파라미터 가져와서 변수에 저장
+		request.setCharacterEncoding("UTF-8"); // POST 방식 한글 인코딩 처리
+		int idx = Integer.parseInt(request.getParameter("idx"));
+		String name = request.getParameter("name");
+		
+		// 데이터베이스 작업을 수행하기 위해 StudentDAO 클래스의 인스턴스 생성
+		StudentDAO dao = new StudentDAO();
+		
+		// StudentDAO - insert() 메서드를 호출하여 INSERT 작업 요청
+		// => 파라미터 : 번호(idx), 이름(name)    리턴타입 : int(insertCount)
+//		int insertCount = dao.insert(idx, name);
+		
+		// -----------------------------------------------------------------
+		// 데이터베이스에 사용될 데이터를 각각의 변수로 다루지 않고
+		// 하나의 객체(묶음)로 다루기 위해 DTO 객체 생성하여 저장할 수 있다!
+		// 1. StudentDTO 클래스의 인스턴스 생성
+		StudentDTO student = new StudentDTO();
+		// 2. StudentDTO 인스턴스에 데이터 저장 => Setter 메서드 활용
+		student.setIdx(idx);
+		student.setName(name);
+//		System.out.println(student.getIdx() + ", " + student.getName());
+		
+		// 만약, toString() 메서드 오버라이딩 했을 경우 인스턴스 변수 그대로 출력
+		// => 출력문에는 DTO 객체의 변수명만 지정해도 toString() 이 자동으로 호출됨
+		// => 만약, String 타입 변수에 toString() 리턴값을 저장하려면 toString() 명시!!
+		System.out.println(student);
+		
+		// 3. StudentDAO - insert() 메서드를 호출하여 INSERT 작업 요청 시
+		//    파라미터로 각각의 변수 대신 StudentDTO 인스턴스 전달
+		
+		// -----------------------------------------------------------------
+		
+		// 데이터 추가(INSERT) 작업 결과 판별하여 후속 처리
+		// => 성공 시 "INSERT 성공!" 출력하고, 실패 시 "INSERT 실패!" 출력
+//		if(insertCount > 0) { // 성공
+//			System.out.println("INSERT 성공!");
+//		} else { // 실패
+//			System.out.println("INSERT 실패!");
+//		}
+		
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

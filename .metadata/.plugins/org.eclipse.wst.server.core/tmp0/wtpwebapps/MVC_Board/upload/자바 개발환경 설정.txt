@@ -1,0 +1,133 @@
+[ 자바 개발 환경 설정 방법 ]
+----------------------------------------------------------------------------------
+< JDK 설치 >
+1. Open JDK 설치 파일 실행하여 JDK 설치
+   (java-11-openjdk-11.0.15.9-1.windows.ojdkbuild.x86_64.msi)
+   => 기본값 그대로 설치
+2. 시스템 환경 변수 편집(윈도우 검색창에 환경 입력) 항목 실행 후
+   환경변수 버튼 클릭 -> 시스템 변수 항목의 Path 더블클릭
+   -> C:\Program Files\ojdkbuild\java-11-openjdk-11.0.15-1\bin 항목 맨 위로 올리기
+   -> 확인 클릭하여 빠져나오기
+3. cmd 창 실행(윈도우 검색창에 cmd 입력) 후
+   javac -version
+   java -version
+   입력하여 정상적으로 자바 버전(11.0.15) 이 출력되면 JDK 설치 성공
+----------------------------------------------------------------------------------
+< 이클립스(Eclipse) 설치 >
+1. 이클립스 압축 파일(eclipse-jee-2022-12-R-win32-x86_64.zip) 풀기
+   => 주로, C 드라이브 루트에 압축 풀기(eclipse 폴더 생성됨)
+      (수업용으로 편의를 위해 eclipse_JSP 등으로 폴더명으로 변경했음)
+2. 폴더 내의 eclipse.exe 파일의 바로 가기 만들기(우클릭 - 바로가기 만들기)
+   => 바로가기 아이콘을 바탕화면에 끌어다 놓고 이름을 Eclipse_JSP 로 변경
+3. 바로가기 아이콘 실행을 통해 이클립스 실행
+4. 맨 처음 실행 시 워크스페이스 선택 창 표시되며(select a directory as workspace)
+   D드라이브나 내문서 등의 위치에 workspace_XXX 형식의 디렉토리 지정
+   (ex. D:\Shared\JSP\workspace_jsp5 또는 C:\Users\ITWILL\Documents\workspace_jsp5 등)
+5. 확인 버튼 클릭 시 이클립스 실행됨
+--------
+만약, 새로운 환경에서 동일한 작업을 수행하고 싶을 경우
+자신의 워크스페이스를 그대로 복사한 후
+이클립스 메뉴 중 File - Switch workspace - Other 메뉴 선택 후
+자신의 워크스페이스를 선택하여 실행하면 
+기존 환경 및 프로젝트를 그대로 사용 가능하다!
+단, 자바 버전이나 톰캣 버전 등이 달라졌을 경우 추가적인 설정은 필요함.
+--------------------------------------------------------------------------------------------
+< 이클립스 환경 설정 >
+[ 이클립스 화면 구성 - Perspective ]
+1. 퍼스펙티브 변경
+    Window - Perspective - Open Perspective 또는 화면 우측 상단의 + 버튼
+2. 퍼스펙티브 초기화(화면 배치 원래대로)
+    Window - Perspective - Reset Perspective
+   
+3. 이클립스 화면 구성요소(Package Explorer 탭, Console 탭 등) 안보일 때 다시 여는 법
+    Window - Show View - 필요한 항목 클릭
+
+
+[ 이클립스 환경 설정 ]
+=> 이클립스 메뉴 - Window - Preferences
+
+< 1. General >
+1-1. Appearance 클릭 후 테마 변경 (Theme - Dark 또는 Light)
+1-2. Appearance 메뉴 - Colors and Fonts 메뉴 - Basic - Text Font 항목 열어서 폰트 변경
+1-3. Appearance 메뉴 - Editors 메뉴 - Text Editors 메뉴 - Spelling 항목 열어서
+      Elable spell checking 해제 (프로그램 문법이 아닌 문자 데이터의 영문자 스펠링 검사 => 불필요)
+1-4. Appearance 메뉴 - Keys 항목에서 단축키 변경 가능(훈련생은 불필요)
+1-5. Appearance 메뉴 - Workspace 클릭 후 아래쪽 Text file encoding 항목에서
+      Other - UTF-8 선택 (작성한 코드 인코딩 방식을 UTF-8 로 변경 => 나중에 다른데(메모장이나 다른 이클립스)서 열 때 한글 안 깨짐)
+      => 필수!!!!
+---------- 웹용 추가 항목 ----------
+1-6. Web Browser 클릭 후 Use external web browser 선택 및 Chrome 선택
+--------------------------------
+
+< 2. Java 메뉴 >
+2-1. Code Style - Organize Imports (당장 불필요)
+      => Number of imports needed for .* (e.g. 'org.eclipse.*');   항목 99 를 1로 변경
+2-2. Compiler 클릭 후 Compiler compliance level 항목 17 을 11 로 변경(JDK 버전에 맞게)  
+     => 필수!!!!
+2-3. Installed JREs 클릭 후 기존 JRE 삭제(Remove)하고 추가(Add) 클릭
+     Standard VM 선택(기본) Next -> JRE home 항목 Directory 클릭 후 
+     C:\Program Files\Java 폴더 내의 JRE 폴더 클릭 후 폴더 선택
+     => 필수!!!!
+     ex) C:\Program Files\ojdkbuild\java-11-openjdk-11.0.15-1
+
+< 3. Web 메뉴 >
+4-1. HTML Files - Encoding 항목을 UTF-8 로 변경
+4-2. JSP Files - Encoding 항목을 UTF-8 로 변경
+
+====================================================================================
+[ 아파치 톰캣(Apache Tomcat) 서버 설치 및 이클립스 연동 ]
+1. apache-tomcat-9.0.70.exe 설치 파일 실행
+2. 정보 입력 과정에서 Next 누르다가 Configuration(설정) 항목에서
+   Server Shutdown Port 항목 값에 8005 입력 후 Next
+3. Java Virtual Machine 항목에서 JDK 설치 위치 확인 후 Next
+4. 계속 진행 후 Install 클릭하여 설치 진행
+5. 설치 완료 후 Run Apache Tomcat 체크 끄고 Finish
+
+
+---------- 웹용 추가 항목 ----------
+< 이클립스 Window - Preferences - Server 메뉴 >
+Runtime Environments - Add 버튼 클릭 후
+Apache 항목의 Apache Tomcat v9.0(설치 버전에 맞는 항목 선택) 선택 후 Next 
+그 다음 Tomcat Installation Directory 부분의 Browse 버튼 클릭하여
+톰캣 설치 폴더(ex. C:\Program Files\Apache Software Foundation\Tomcat 9.0) 선택 후 
+Finish 버튼 클릭
+=> 단, 먼저 톰캣 서버 설치가 되어 있어야 한다!
+=> 또한, Tomcat 9.0 폴더 선택 시 설치 후 최소 1회는 폴더를 더블클릭하여 권한 얻어야 함
+----------------------------------------------------------------------------
+[ 설정 후 프로젝트를 톰캣 서버에 추가하는 방법 ]
+이클립스 상의 탭 중 Servers 탭 클릭하면 처음 설정했을 경우에는 서버가 존재하지 않음
+(No servers are available. Click this link to create a new server...)
+1) 해당 링크 클릭 
+2) New Server 창의 Apache 항목의 Tomcat 9.0 선택
+3) Next 클릭 시 해당 서버에서 실행 할 프로젝트 등록 가능
+   (좌측의 프로젝트 클릭 후 Add 버튼 클릭)
+4) Finish 버튼 클릭
+5) Servers 탭에 Tomcat v9.0 Server al localhost 추가 확인
+6) 우측에 [Stopped] 표시되어 있을 경우 꺼져있는 상태이므로
+   우클릭 - Start 클릭 시 서버 실행됨
+   실행 완료 시 [Started, Synchronized] 표시됨
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

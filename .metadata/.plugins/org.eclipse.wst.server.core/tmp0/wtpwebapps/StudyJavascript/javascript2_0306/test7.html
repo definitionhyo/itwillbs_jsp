@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script type="text/javascript">
+		/*
+		- 함수와 연산자에 전달되는 값은 대부분 적절한 데이터타입(자료형)으로 자동 형변환 일어남
+		  (변수에 값을 저장하면 변수의 데이터타입도 자동으로 결정됨)
+		  ex) prompt() 함수로 입력받은 숫자는 string 타입이며 number 타입과 연산 시 
+		      number 타입으로 자동 형변환이 일어남(타입을 일치시킨 후 연산을 수행)
+		- 상황에 따라 개발자가 의도한 타입으로 변환하는 것을 강제 형변환(= 명시적 형변환)이라고 함
+		  => 자바스크립트에서 명시적 형변환을 수행하는 방법 : 타입(데이터)
+		  => 주의! 자바에서 명시적 형변환과 소괄호 위치가 다름!
+		  => 주의! 대표적인 타입 이름(string, number, boolean 등)의 첫글자를 대문자로 지정
+		     ex) 변수 num 의 값을 string 타입으로 변환 시 : String(num)
+		*/
+		
+		// 1. 문자열(string) 타입으로 변환
+		// => 참고) alert() 함수 파라미터가 string 타입이며, 
+		//          다른 타입 데이터 전달 시 자동으로 string 타입 문자열로 변환됨
+		//    ex) alert(10); // 10 은 number 타입이지만, alert() 함수에 전달 시 string 타입으로 변환됨
+		// => string 타입으로 명시적 형변환 방법 : String(데이터)
+		let value1 = 10;
+		document.write(value1 + " 의 변환 전 타입 : " + typeof(value1) + "<br>"); // number
+		
+		// number 타입인 value1 변수의 타입을 문자열 타입(string)으로 강제 형변환
+		value1 = String(value1);
+		document.write(value1 + " 의 변환 후 타입 : " + typeof(value1) + "<br>"); // string
+		
+		// ---------------------------------------------------------------------------------
+		// value2 변수에 boolean 타입 true 값 저장 후 string 타입으로 변환
+		let value2 = true;
+		document.write(value2 + " 의 변환 전 타입 : " + typeof(value2) + "<br>"); // boolean
+		
+		// boolean 타입인 value2 변수의 타입을 문자열 타입(string)으로 강제 형변환
+	// 	value2 = String(value2);
+		
+		// 문자열 변환 시 형변환 연산 대신 널스트링("")과 문자열 결합을 수행해도 string 타입이 된다!
+		value2 = value2 + "";
+		
+		document.write(value2 + " 의 변환 후 타입 : " + typeof(value2) + "<br>"); // string
+		document.write("<hr>");
+		
+		/*
+		====================================================================================
+		2. 숫자(number) 타입으로 변환
+		   - 수학과 관련된 함수 및 연산 과정 등에서 자동으로 number 타입으로 형변환 일어남
+		     ex) 문자열 타입 숫자("10") / 문자열 타입 숫자("2") 연산할 경우
+		         두 데이터 모두 string -> number 타입으로 각각 변환된 후 연산을 수행함
+		         => 단, 덧셈연산자(+)의 경우 문자열에 사용 시 연결연산자로 바뀌므로 
+		            강제로 숫자 형식으로 변환 후 덧셈 연산을 수행해야한다!
+		   - 명시적(강제) 형변환 방법 : Number(데이터)
+		     => 주로, prompt() 함수 등을 사용하여 데이터 입력 시 문자로 취급되므로
+		        필요에 따라 number 타입으로 변환 후 사용
+		*/
+	// 	document.write("10" / "2"); // "10" / "2" = 10 / 2 형태로 변환 후 연산되어 5 출력됨
+	
+	// 	document.write("10" + "2"); // 주의! "10" + "2" = 문자열 결합으로 "102" 출력됨
+		// 따라서, 실제 덧셈 형식으로 연산해야할 경우 강제 형변환을 통해 연산을 수행해야함
+	// 	document.write(Number("10") + Number("2"));
+		
+		
+	// 	let strNum1 = prompt("첫번째 정수 입력");
+	// 	document.write(strNum1 + " 의 변환 전 타입 : " + typeof(strNum1) + "<br>"); // string
+	// 	// string 타입인 strNum1 변수 타입을 숫자 타입(number)으로 변환 후 변수 num1 에 저장
+	// 	let num1 = Number(strNum1);
+	// 	document.write(num1 + " 의 변환 후 타입 : " + typeof(num1) + "<br>"); // number
+	// 	// => 단, 취소 버튼 클릭 시 null 값(object 타입)이 전달되고, 
+	// 	//    형변환에 의해 number 타입으로 변환되면서 기본값으로 0 이 저장됨
+	// 	//    (하지만, 취소 버튼 null 값에 대한 별도의 처리하는 것이 더 정확함!)
+		
+	// 	let strNum2 = prompt("두번째 정수 입력");
+	// 	document.write(strNum2 + " 의 변환 전 타입 : " + typeof(strNum2) + "<br>"); // string
+	// 	// string 타입인 strNum2 변수 타입을 숫자 타입(number)으로 변환 후 변수 num2 에 저장
+	// 	let num2 = Number(strNum2);
+	// 	document.write(num2 + " 의 변환 후 타입 : " + typeof(num2) + "<br>"); // number
+		
+		
+	// 	document.write("strNum1 + strNum2 = " + strNum1 + strNum2 + "<br>"); // 105(비정상)
+	// 	// => 좌 -> 우 방향으로 순차적인 덧셈 연산을 통해 문자열 연결되므로 10 과 5 연결됨
+	// 	document.write("(strNum1 + strNum2) = " + (strNum1 + strNum2) + "<br>"); // 105(비정상)
+	// 	// => 소괄호() 를 통해 연산 과정에 우선순위를 부여했으나 둘 다 문자열이므로 10 과 5 연결됨
+		
+	// 	// 소괄호() 내부의 문자열 타입 숫자를 각각 number 타입으로 변환해야함
+	// 	document.write("(Number(strNum1) + Number(strNum2) = " + (Number(strNum1) + Number(strNum2)) + "<br>");
+		
+	// 	// 미리 number 타입으로 변환한 데이터를 저장해두면 기본 연산으로 가능
+	// 	document.write("(num1 + num2) = " + (num1 + num2) + "<br>");
+		
+	// 	// 또는, 미리 연산 결과를 하나의 변수에 저장해두어도 기본 연산으로 가능
+	// 	let total = Number(strNum1) + Number(strNum2);
+	// 	document.write("total = " + total + "<br>");
+		
+	// 	document.write("<hr>");
+		// ====================================================================================
+		// 주의! string 타입 -> number 타입 변환 과정에서
+		// 숫자 데이터 외의 다른 데이터(문자 등)가 포함되어 있을 경우
+		// 변환 수행 시 숫자 형태로 변환은 되지만 데이터가 NaN 이 저장됨
+		// (NaN = Not a Number 의 약자로 숫자가 아니라는 의미의 특수한 값)
+		// => 즉, 변환 과정에서 오류가 발생하는 것이 아니라 특수값(NaN)이 저장됨
+		let strNum3 = "1234a";
+		document.write(strNum3 + " 의 변환 전 타입 : " + typeof(strNum3) + "<br>"); // string
+		
+		let num3 = Number(strNum3);
+		document.write(num3 + " 의 변환 후 타입 : " + typeof(num3) + "<br>"); // NaN
+		// ====================================================================================
+		// 주의! boolean 타입 변환 시 데이터가 존재하기만 하면 무조건 true 로 취급됨
+		let str4 = "false"; // boolean 타입 데이터가 아닌 문자열 "false" 값
+		document.write(str4 + " 의 변환 전 타입 : " + typeof(str4) + "<br>"); // string
+		
+		let data4 = Boolean(str4);
+		// => "false" 라는 문자열은 값이 무엇인지 중요하지 않고 문자열이 존재하기 때문에
+		//    boolean 타입 변환 과정에서 true 값으로 변환된다!
+		document.write(data4 + " 의 변환 후 타입 : " + typeof(data4) + "<br>"); // string
+		
+		
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,65 @@
+[ 이클립스 화면 구성 - Perspective ]
+1. 퍼스펙티브 변경
+    Window - Perspective - Open Perspective 또는 화면 우측 상단의 + 버튼
+2. 퍼스펙티브 초기화(화면 배치 원래대로)
+    Window - Perspective - Reset Perspective
+   
+3. 이클립스 화면 구성요소(Package Explorer 탭, Console 탭 등) 안보일 때 다시 여는 법
+    Window - Show View - 필요한 항목 클릭
+
+
+[ 이클립스 환경 설정 ]
+=> 이클립스 메뉴 - Window - Preferences
+
+< 1. General >
+1-1. Appearance 클릭 후 테마 변경 (Theme - Dark 또는 Light)
+1-2. Appearance 메뉴 - Colors and Fonts 메뉴 - Basic - Text Font 항목 열어서 폰트 변경
+1-3. Appearance 메뉴 - Editors 메뉴 - Text Editors 메뉴 - Spelling 항목 열어서
+      Elable spell checking 해제 (프로그램 문법이 아닌 문자 데이터의 영문자 스펠링 검사 => 불필요)
+1-4. Appearance 메뉴 - Keys 항목에서 단축키 변경 가능(훈련생은 불필요)
+1-5. Appearance 메뉴 - Workspace 클릭 후 아래쪽 Text file encoding 항목에서
+      Other - UTF-8 선택 (작성한 코드 인코딩 방식을 UTF-8 로 변경 => 나중에 다른데(메모장이나 다른 이클립스)서 열 때 한글 안 깨짐)
+      => 필수!!!!
+---------- 웹용 추가 항목 ----------
+1-6. Web Browser 클릭 후 Use external web browser 선택 및 Chrome 선택
+--------------------------------
+
+< 2. Java 메뉴 >
+2-1. Code Style - Organize Imports (당장 불필요)
+      => Number of imports needed for .* (e.g. 'org.eclipse.*');   항목 99 를 1로 변경
+2-2. Compiler 클릭 후 Compiler compliance level 항목 17 을 11 로 변경(JDK 버전에 맞게)  
+     => 필수!!!!
+2-3. Installed JREs 클릭 후 기존 JRE 삭제(Remove)하고 추가(Add) 클릭
+     Standard VM 선택(기본) Next -> JRE home 항목 Directory 클릭 후 
+     C:\Program Files\Java 폴더 내의 JRE 폴더 클릭 후 폴더 선택
+     => 필수!!!!
+     ex) C:\Program Files\ojdkbuild\java-11-openjdk-11.0.15-1
+
+
+
+---------- 웹용 추가 항목 ----------
+< 3. Server 메뉴 >
+Runtime Environments - Add 버튼 클릭 후
+Apache 항목의 Apache Tomcat v9.0(설치 버전에 맞는 항목 선택) 선택 후 Next 
+그 다음 Tomcat Installation Directory 부분의 Browse 버튼 클릭하여
+톰캣 설치 폴더(ex. C:\Program Files\Apache Software Foundation\Tomcat 9.0) 선택 후 
+Finish 버튼 클릭
+
+< 4. Web 메뉴 >
+4-1. HTML Files - Encoding 항목을 UTF-8 로 변경
+4-2. JSP Files - Encoding 항목을 UTF-8 로 변경
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,9 @@
+127.0.0.1 - - [13/Jun/2023:12:04:07 +0900] "GET / HTTP/1.1" 404 807
+0:0:0:0:0:0:0:1 - - [13/Jun/2023:12:04:08 +0900] "GET /MVC_Board/ HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [13/Jun/2023:12:04:09 +0900] "GET /MVC_Board/main HTTP/1.1" 200 2009
+0:0:0:0:0:0:0:1 - - [13/Jun/2023:12:04:09 +0900] "GET /MVC_Board/css/default.css HTTP/1.1" 200 216
+0:0:0:0:0:0:0:1 - - [13/Jun/2023:12:04:09 +0900] "GET /favicon.ico HTTP/1.1" 404 818
+0:0:0:0:0:0:0:1 - - [13/Jun/2023:12:04:24 +0900] "GET /MVC_Board/BoardDetail.bo?board_num=11 HTTP/1.1" 200 2616
+0:0:0:0:0:0:0:1 - - [13/Jun/2023:12:04:26 +0900] "GET /MVC_Board/BoardList.bo HTTP/1.1" 200 5643
+0:0:0:0:0:0:0:1 - - [13/Jun/2023:12:04:26 +0900] "GET /MVC_Board/images/re.gif HTTP/1.1" 200 284
+0:0:0:0:0:0:0:1 - - [13/Jun/2023:12:04:31 +0900] "GET /MVC_Board/BoardDetail.bo?board_num=7&pageNum=1 HTTP/1.1" 200 2658

@@ -1,0 +1,14 @@
+package svc;
+
+import vo.BoardBean;
+
+public class BoardDetailService {
+
+	public BoardBean getBoard(int board_num) {
+		BoardBean 
+		
+		
+		
+	}
+
+}

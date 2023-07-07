@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>test14.html - form 태그 이벤트</h1>
+	<form action="test14_2.html" name="fr">
+		아이디 <input type="text" name="id" required="required">
+	
+	</form>
+</body>
+</html>

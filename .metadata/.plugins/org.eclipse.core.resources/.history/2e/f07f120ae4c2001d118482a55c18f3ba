@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>test4_new_window.html</h1>
+	<input type="button" value="창(윈도우) 정보 확인" onclick="showWindowInfo()"><br>
+	<input type="button" value="새 창 열기" onclick="openWindow()"><br>
+	<input type="button" value="새 창 열기2" onclick="openWindow2()"><br>
+</body>
+</html>

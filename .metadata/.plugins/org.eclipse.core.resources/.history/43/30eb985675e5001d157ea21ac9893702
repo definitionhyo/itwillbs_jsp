@@ -1,0 +1,8 @@
+package action;
+
+public class Snippet {
+	public static void main(String[] args) {
+		MemberListAction
+	}
+}
+

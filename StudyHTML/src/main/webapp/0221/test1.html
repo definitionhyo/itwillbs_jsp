@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>hn 태그 연습</title> <!-- 웹브라우저 제목표시줄에 표시되는 내용은 title 태그 내에 작성 -->
+</head>
+<body>
+	<!-- 이 영역은 HTML 주석 영역입니다. -->
+	<!-- 
+	한 줄 또는 여러 줄에 걸쳐 주석을 작성할 수 있으며
+	이 곳에 있는 내용들은 웹브라우저가 실행 대상에서 제외시킵니다.
+	=> 즉, 주석(Comment)은 프로그램 실행에 영향을 미치지 않는 코드 블럭이다.
+	=> 단, 웹브라우저의 소스보기 기능을 통해 볼 수는 있다!
+	-->
+	
+	<!-- <br> 태그는 줄바꿈 태그로 엔터키 역할을 수행(HTML 문서에서 실제 엔터키는 적용 안됨) -->
+	일반 텍스트<br>
+	일반 텍스트             일반 텍스트
+	일반 텍스트<br>
+	<hr> <!-- <hr> 태그는 수평선 태그로 문서에 가로줄을 긋는 태그 -->
+	<!-- 
+	<hn></hn> 태그 : 헤드라인(제목) 태그(보통 문서의 제목 등을 강조하는 용도로 사용)
+	- 기본적으로 대상 텍스트를 굵게 표시하고, 크기를 다르게 표시함
+	- n : 1(최대) ~ 6(최소) 사이의 값 지정
+	  => 1 ~ 6 이외의 값을 사용한 hn 태그 지정 시 태그가 적용되지 않은 텍스트로 표시됨
+	- align 속성으로 정렬도 가능함
+	-->
+	<h1>제목 글자 태그 1</h1> <!-- 가장 큰 사이즈 -->
+	<h2 align="center">제목 글자 태그 2</h2> <!-- 가운데 정렬 -->
+	<h3 align="CENTER">제목 글자 태그 3</h3> <!-- 가운데 정렬 -->
+	<h4 align="left">제목 글자 태그 4</h4> <!-- 왼쪽 정렬 -->
+	<h5 align="right">제목 글자 태그 5</h5> <!-- 오른쪽 정렬 -->
+	<h6>제목 글자 태그 6</h6> <!-- 가장 작은 사이즈 -->
+	<h7>제목 글자 태그 7</h7> <!-- h7 태그는 존재하지 않음 => 일반 텍스트로 표시됨 -->
+	<hr>
+	<!-- HTML 문서에서 공백은 무조건 한 칸으로 취급함. &nbsp; 입력 시 공백 여러개 지정 가능 -->
+	Hello, World!<br>Hello, World!&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hello,World!<br>
+	<b>Hello, World!</b><br> <!-- <b> : 글자 굵게(진하게) -->
+	<i>Hello, World!</i><br> <!-- <i> : 글자 기울임꼴(이탤릭체) -->
+	<u>Hello, World!</u><br> <!-- <u> : 밑줄(CSS 에서 사용 권장) -->
+	<strike>Hello, World!</strike><br> <!-- <strike> : 취소선(CSS 에서 사용 권장) -->
+	<hr>
+	
+	<!-- 
+	<p></p> 태그 : 문단 태그
+	- p 태그 사이 내용을 하나의 문단으로 취급함
+	- 다음 문단과 구별하기 위해 문단 마지막에서 줄바꿈을 2번 실행(<br> * 2 와 동일)
+	- 끝태그 없이 단독으로도 사용 가능(<p> = <br> * 2)
+	-->
+	<p>
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quis euismod dolor. Phasellus varius blandit diam at semper. Nullam dapibus laoreet nisi ac cursus. Donec vulputate ipsum congue, porta est luctus, scelerisque augue. Ut maximus magna in metus consectetur, sed malesuada mauris feugiat. Vestibulum tempor neque at turpis elementum commodo. In ac tincidunt metus, vel volutpat lorem. Suspendisse potenti. Cras porttitor sed dolor sit amet commodo. Maecenas efficitur tincidunt ex, nec pulvinar felis dapibus nec. Aliquam feugiat tincidunt metus, nec sodales sem elementum ac. Integer quis euismod arcu.
+	</p>
+	<p>
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quis euismod dolor. Phasellus varius blandit diam at semper. Nullam dapibus laoreet nisi ac cursus. Donec vulputate ipsum congue, porta est luctus, scelerisque augue. Ut maximus magna in metus consectetur, sed malesuada mauris feugiat. Vestibulum tempor neque at turpis elementum commodo. In ac tincidunt metus, vel volutpat lorem. Suspendisse potenti. Cras porttitor sed dolor sit amet commodo. Maecenas efficitur tincidunt ex, nec pulvinar felis dapibus nec. Aliquam feugiat tincidunt metus, nec sodales sem elementum ac. Integer quis euismod arcu.
+	</p>
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quis euismod dolor. Phasellus varius blandit diam at semper. Nullam dapibus laoreet nisi ac cursus. Donec vulputate ipsum congue, porta est luctus, scelerisque augue. Ut maximus magna in metus consectetur, sed malesuada mauris feugiat. Vestibulum tempor neque at turpis elementum commodo. In ac tincidunt metus, vel volutpat lorem. Suspendisse potenti. Cras porttitor sed dolor sit amet commodo. Maecenas efficitur tincidunt ex, nec pulvinar felis dapibus nec. Aliquam feugiat tincidunt metus, nec sodales sem elementum ac. Integer quis euismod arcu.
+	<p>
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quis euismod dolor. Phasellus varius blandit diam at semper. Nullam dapibus laoreet nisi ac cursus. Donec vulputate ipsum congue, porta est luctus, scelerisque augue. Ut maximus magna in metus consectetur, sed malesuada mauris feugiat. Vestibulum tempor neque at turpis elementum commodo. In ac tincidunt metus, vel volutpat lorem. Suspendisse potenti. Cras porttitor sed dolor sit amet commodo. Maecenas efficitur tincidunt ex, nec pulvinar felis dapibus nec. Aliquam feugiat tincidunt metus, nec sodales sem elementum ac. Integer quis euismod arcu.
+	<br><br>
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quis euismod dolor. Phasellus varius blandit diam at semper. Nullam dapibus laoreet nisi ac cursus. Donec vulputate ipsum congue, porta est luctus, scelerisque augue. Ut maximus magna in metus consectetur, sed malesuada mauris feugiat. Vestibulum tempor neque at turpis elementum commodo. In ac tincidunt metus, vel volutpat lorem. Suspendisse potenti. Cras porttitor sed dolor sit amet commodo. Maecenas efficitur tincidunt ex, nec pulvinar felis dapibus nec. Aliquam feugiat tincidunt metus, nec sodales sem elementum ac. Integer quis euismod arcu.
+	<p align="center">
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quis euismod dolor. Phasellus varius blandit diam at semper. Nullam dapibus laoreet nisi ac cursus. Donec vulputate ipsum congue, porta est luctus, scelerisque augue. Ut maximus magna in metus consectetur, sed malesuada mauris feugiat. Vestibulum tempor neque at turpis elementum commodo. In ac tincidunt metus, vel volutpat lorem. Suspendisse potenti. Cras porttitor sed dolor sit amet commodo. Maecenas efficitur tincidunt ex, nec pulvinar felis dapibus nec. Aliquam feugiat tincidunt metus, nec sodales sem elementum ac. Integer quis euismod arcu.
+	</p>
+	<hr>
+	<!-- 
+	<font></font> 태그 : 폰트(글꼴) 지정 태그
+	- face 속성 : 글꼴(시스템에 설치된 내부 폰트 이름 지정) => 폰트명은 대소문자 구별 없음
+	- size 속성 : 글자 크기(1(최소) ~ 7(최대) 사이의 값 사용, 생략 시 기본값 3)
+	- color 속성 : 글자색(영문 색상명 또는 #RRGGBB 색상코드 형식으로 지정)
+	-->
+	font 태그 미지정<br>
+	<font face="궁서체">궁서체</font><br>
+	<font face="d2coding" color="BLUE">d2coding체</font><br>
+	<font face="D2Coding" size="3" color="blue">D2Coding체</font><br>
+	<font face="D2Coding" size="7" color="RED">D2Coding체</font><br>
+	<font face="D2Coding" size="1" color="#FF0000">D2Coding체</font><br> <!-- RED 와 동일 -->
+	
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

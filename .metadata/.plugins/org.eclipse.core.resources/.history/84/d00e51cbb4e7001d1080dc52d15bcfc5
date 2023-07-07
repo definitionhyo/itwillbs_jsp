@@ -1,0 +1,131 @@
+package controller;
+
+import java.io.IOException;
+import java.util.Iterator;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import action.Action;
+import action.MemberJoinProAction;
+import action.MemberListAction;
+import action.MemberLoginProAction;
+import vo.ActionForward;
+
+@WebServlet("*.me")
+public class MemberFrontController extends HttpServlet {
+
+	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("MemberFrontController");
+		
+		// POST 방식 요청에 대한 한글 인코딩 처리
+		request.setCharacterEncoding("UTF-8");
+		
+		// 공통으로 사용할 변수 선언
+		Action action = null; // XXXAction 클래스 인스턴스 관리(업캐스팅 할 부모타입)
+		ActionForward forward = null; // 포워딩 정보 관리
+		
+		// 서블릿 주소 추출하기
+		String command = request.getServletPath();
+		System.out.println("command : " + command); // "/XXX.me"
+		
+		// 추출된 서블릿 주소(command)를 if문을 통해 문자열 비교 수행 후
+		// 각 주소에 따른 액션(작업) 요청
+		if(command.equals("/MemberJoinForm.me")) {
+//			System.out.println("회원가입 폼!");
+			
+			// 회원가입 폼 출력하는 뷰페이지(member/member_join_form.jsp) 로 포워딩
+			// => 비즈니스 로직(= DB 작업 등) 불필요하므로 뷰페이지로 바로 이동
+			// => Dispatch 방식(주소표시줄 URL 이 변경되지 않음 = MemberJoinForm.me 유지됨)
+			// => 주의! 현재 서블릿 주소가 http://localhost:8080/MVC_Board/MemberJoinForm.me 이며
+			//    컨텍스트 루트(MVC_Board)가 webapp 디렉토리를 가리키므로
+			//    하위 디렉토리(member)까지 명시해야한다!
+//			RequestDispatcher dispatcher = 
+//					request.getRequestDispatcher("member/member_join_form.jsp");
+//			dispatcher.forward(request, response);
+			// ----------------------------------------------------
+			// 공통 포워딩 작업을 위한 ActionForward 클래스 활용
+			// 1. ActionForward 객체 생성
+			forward = new ActionForward();
+			// 2. ActionForward 객체의 setPath() 메서드를 호출하여 이동할 URL 지정
+			forward.setPath("member/member_join_form.jsp");
+			// 3. ActionForward 객체의 setRedirect() 메서드를 호출하여 포워딩 방식 지정
+			//    => Dispatch 방식으로 포워딩하므로 false
+			forward.setRedirect(false); // 생략도 가능(boolean 타입 기본값이 false)
+		} else if(command.equals("/MemberLoginForm.me")) {
+			// 로그인 폼(member/member_login_form.jsp) 요청 => Dispatch
+			forward = new ActionForward();
+			forward.setPath("member/member_login_form.jsp");
+			forward.setRedirect(false);
+		} else if(command.equals("/MemberJoinPro.me")) {
+			// 회원 가입을 위한 비즈니스 로직 처리 필요
+			// 비즈니스 로직을 처리할 Action 클래스의 인스턴스 생성 후 execute() 메서드 호출
+			// => 파라미터 : HttpServletRequest 객체, HttpServletResponse 객체
+			// => 리턴타입 : ActionForward
+			action = new MemberJoinProAction();
+			forward = action.execute(request, response);
+		} else if(command.equals("/MemberLoginPro.me")) {
+			// 회원 로그인을 위한 비즈니스 로직 처리 필요
+			// 비즈니스 로직을 처리할 Action 클래스의 인스턴스 생성 후 execute() 메서드 호출
+			// => 파라미터 : HttpServletRequest 객체, HttpServletResponse 객체
+			action = new MemberLoginProAction();
+			forward = action.execute(request, response);
+		} else if(command.equals("/MemberList.me")) {
+			// 회원 목록 조회를 위한 비즈니스 로직 처리 필요
+			// 비즈니스 로직을 처리할 Action 클래스의 인스턴스 생성 후 execute() 메서드 호출
+			// => 파라미터 : HttpServletRequest 객체, HttpServletResponse 객체
+			action = new MemberListAction();
+			forward = action.execute(request, response);
+		} 
+		
+		// -------------------------------------------------------------------------
+		// ActionForward 객체의 포워딩 정보를 사용하여 공통으로 포워딩 처리
+		// 1. ActionForward 객체가 null 이 아닐 경우 판별
+		if(forward != null) {
+			// 2. ActionForward 객체에 저장된 포워딩 방식 판별(Redirect vs Dispatch)
+			if(forward.isRedirect()) { // Redirect 방식
+				System.out.println("Redirect!");
+				// 3. 포워딩(포워딩 경로는 ActionForward 객체의 getPath() 메서드 활용)
+				// 3-1. Redirect 방식 포워딩 수행
+				response.sendRedirect(forward.getPath());
+			} else { // Dispatch 방식
+				System.out.println("Dispatch!");
+				// 3. 포워딩
+				// 3-2. Dispatch 방식 포워딩 수행
+				RequestDispatcher dispatcher = 
+						request.getRequestDispatcher(forward.getPath());
+				dispatcher.forward(request, response);
+			}
+		}
+		// -------------------------------------------------------------------------
+		
+		
+	}
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doProcess(request, response);
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doProcess(request, response);
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

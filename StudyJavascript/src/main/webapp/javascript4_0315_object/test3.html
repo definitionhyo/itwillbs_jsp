@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	// Date 객체
+	// => 날짜 및 시각 정보를 관리하는 객체
+	// --------------------------------------------
+	// Date 객체 생성
+	// 1) 현재 날짜(지금)를 기준으로 객체 생성
+	let now = new Date(); // 소괄호 안에 아무것도 전달하지 않음
+	document.write(now + "<br>"); // Wed Mar 15 2023 11:06:51 GMT+0900 (한국 표준시)
+	
+	// 2) 특정 날짜를 지정하여 객체 생성
+	// => 문자열로 "년년년년-월월-일일" 형태의 날짜 지정
+	let now2 = new Date("2000-01-01");
+	document.write(now2 + "<br>"); // Sat Jan 01 2000 09:00:00 GMT+0900 (한국 표준시)
+	
+	// 3) 특정 날짜 및 시각을 지정하여 객체 생성
+	// => "년년년년-월월-일일T시시:분분:초초" 형태로 지정
+	let now3 = new Date("2020-12-31T23:59:59");
+	document.write(now3 + "<br>"); // Thu Dec 31 2020 23:59:59 GMT+0900 (한국 표준시)
+	// => 날짜 및 시각 정보를 콤마로 구분하여 생성도 가능(순서 주의 => 연, 월, 일, 시, 분, 초)
+	let now4 = new Date(2022, 01, 01, 10, 50, 0);
+	document.write(now4 + "<br>"); // Tue Feb 01 2022 10:50:00 GMT+0900 (한국 표준시)
+	
+	document.write("<hr>");
+	// ==================================================================================
+	// Date 객체의 메서드 활용
+	// 연, 월, 일, 시, 분, 초를 각각의 별도의 값으로 가져오기(getXXX() 메서드 활용)
+	// 현재 날짜 및 시각이 저장된 now 객체로부터 정보 가져오기
+	let year = now.getFullYear();
+// 	document.write("연도 : " + year + "<br>");
+	let month = now.getMonth() + 1; // 0 ~ 11 까지 월을 표기함(가져올 때 + 1 필수!)
+	let day = now.getDate();
+	let hour = now.getHours();
+	let min = now.getMinutes();
+	let sec = now.getSeconds();
+	document.write(year + "년 " + month + "월 " + day + "일 " + hour + "시 " + min + "분 " + sec + "초<br>");
+	
+	// Date 객체의 toLocaleString() 메서드를 활용하면
+	// 각 국가의 표기법에 맞는 날짜 및 시각 형식으로 변환
+	document.write(now.toLocaleString() + "<br>");
+	
+	// 날짜 및 시각 정보를 변경(setXXX() 메서드 활용)
+	// 현재 시각이 저장된 now 객체의 시, 분, 초를 각각 0으로 설정
+	let today = new Date();
+	today.setHours(0);
+	today.setMinutes(0);
+	today.setSeconds(0);
+	
+	document.write("today : " + today.toLocaleString() + "<br>");
+	
+	// 대상 날짜를 지정하여 Date 객체(targetDate) 생성 후 시, 분, 초를 각각 0으로 설정
+	let targetDate = new Date("2023-02-20");
+	targetDate.setHours(0);
+	targetDate.setMinutes(0);
+	targetDate.setSeconds(0);
+	document.write("targetDate : " + targetDate.toLocaleString() + "<br>");
+	
+	// --------------------------
+	// Date 객체의 getTime() 메서드를 호출하여 해당 객체의 날짜 값 가져오기 가능
+	// => 1970년 1월 1일 기준으로 지정된 날짜와의 차이를 밀리초(ms) 단위로 계산하여 리턴
+	let getTimeToday = today.getTime();
+	let getTimeTargetDate = targetDate.getTime();
+// 	document.write("today : " + getTimeToday + "<br>");
+// 	document.write("targetDate : " + getTimeTargetDate + "<br>");
+	
+	// 오늘(getTimeToday)을 기준으로 대상 날짜(getTimeTargetDate)와의 차이 계산
+	let gap = getTimeToday - getTimeTargetDate;
+// 	document.write("gap : " + gap + "<br>");
+	// => 결과값이 밀리초(ms) 단위이므로 이 값을 일 또는 연 등으로 환산(변환)해야함
+	//    ex) 일 기준으로 환산 시 : 밀리초 -> 초(/ 1000) -> 분(/ 60) -> 시(/ 60) -> 일(/ 24)
+// 	let convertTime = gap / 1000 / 60 / 60 / 24;
+// 	document.write("convertTime : " + convertTime + "<br>");
+	// => 밀리초 단위로 계산된 결과가 소수점(실수) 형태로 계산됨
+	// => Math 객체의 round() 메서드를 활용하여 반올림하여 정수로 변환 가능
+	let convertTime = Math.round(gap / 1000 / 60 / 60 / 24);
+// 	document.write("convertTime : " + convertTime + "<br>");
+
+	// 날짜 계산 결과에 대한 양수, 음수, 동등 판별
+	if(convertTime > 0) { // 양수(= 오늘 기준으로 대상 날짜가 과거)
+		document.write(convertTime + "일 지났습니다.<br>");
+	} else if(convertTime < 0) { // 음수(= 오늘 기준으로 대상 날짜가 미래)
+		document.write(convertTime + "일 남았습니다.<br>");
+	} else { // 동등(= 두 날짜가 동일 = 오늘)
+		document.write("D-Day 입니다.<br>");
+	}
+	
+</script>
+</head>
+<body>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

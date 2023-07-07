@@ -1,0 +1,57 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div align="center">
+		<h1>로그인</h1>
+		<form action="test6_result.html">
+			<!--
+			- 폼 태그 요소의 값을 다른 페이지로 전송 및 해당 데이터를 전달받아 사용하려면
+			  입력 항목 태그에서 name 속성 지정 필수! (name 속성 생략 시 데이터 전달되지 않음)
+			- 텍스트 박스 등 입력 태그는 데이터 기술하지 않으면 파라미터명(name 속성값)만 전송됨
+			- 체크박스 항목은 미 체크 시 파라미터 자체가 전송되지 않음
+			-->
+			<input type="text" placeholder="아이디" name="id"><br>
+			<input type="password" placeholder="패스워드" name="passwd"><br>
+			
+			<!-- 체크박스 사용 시 value 속성이 없을 경우 체크상태를 "on" 값으로 표시 -->
+			<!-- ex) 체크 시 : rememberLogin=on -->
+<!-- 			<input type="checkbox" name="rememberLogin">로그인 상태 유지<br> -->
+			<!-- 체크박스 사용 시 value 속성 설정했을 경우 해당 value 속성값이 전달됨 -->
+			<!-- ex) 체크 시 : rememberLogin=true -->
+			<input type="checkbox" name="rememberLogin" value="true">로그인 상태 유지<br>
+			
+			<input type="submit" value="로그인">
+			<!-- 
+			아이디, 패스워드 입력 및 로그인 상태 유지 체크박스 체크 후
+			로그인 버튼 클릭 시 action 속성에 지정된 test6_result.html 페이지로 이동
+			=> 이 때, 입력 항목들을 함께 전송함
+			
+			< 로그인 버튼 클릭 시 주소 표시줄 결과 >
+			1) 아이디에만 name="id" 속성 설정했을 경우
+			   file:///D:/Shared/JSP/workspace_jsp5/StudyHTML/src/main/webapp/0222/test6_result.html?id=admin
+			   => test6_result.html 뒤에 ? 기호 뒷부분에 id=xxx 형식으로 데이터(파라미터) 표시됨
+			   => 단, 패스워드와 체크박스는 name 속성이 없으므로 데이터 포함되지 않았음
+			
+			2) 아이디, 패스워드에 name 속성 설정했을 경우
+			   file:///D:/Shared/JSP/workspace_jsp5/StudyHTML/src/main/webapp/0222/test6_result.html?id=admin&passwd=1234
+			   => ? 기호 뒷부분에 id 와 함께 passwd 데이터도 표시됨
+			      (이 때, 파라미터 간의 구분은 & 기호로 구분함)
+			
+			3) 아이디, 패스워드 체크박스에 name 속성 설정했을 경우
+			   3-1) 체크박스에 value 속성 미 설정 시 체크 항목은 on 값 전달되며, 미체크 시 전달 X
+			   file:///D:/Shared/JSP/workspace_jsp5/StudyHTML/src/main/webapp/0222/test6_result.html?id=admin&passwd=1234&rememberLogin=on
+			   file:///D:/Shared/JSP/workspace_jsp5/StudyHTML/src/main/webapp/0222/test6_result.html?id=admin&passwd=1234
+			   3-2) 체크박스에 value 속성 설정 시 체크 항목은 설정된 값 전달되며, 미체크 시 전달 X
+			   file:///D:/Shared/JSP/workspace_jsp5/StudyHTML/src/main/webapp/0222/test6_result.html?id=admin&passwd=1234&rememberLogin=true
+			   file:///D:/Shared/JSP/workspace_jsp5/StudyHTML/src/main/webapp/0222/test6_result.html?id=admin&passwd=1234     
+			-->
+		</form>
+	</div>
+</body>
+</html>

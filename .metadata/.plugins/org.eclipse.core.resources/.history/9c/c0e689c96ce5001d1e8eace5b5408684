@@ -1,0 +1,27 @@
+package action;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class MemberLoginProAction {
+	
+	public void execute(HttpServletRequest request, HttpServletResponse response) {
+		System.out.println("MemberLoginProAction");
+		
+		String id = request.getParameter("id");
+		String passwd = request.getParameter("passwd");
+		System.out.println("아이디 : " + id);
+		System.out.println("패스워드 : " + passwd);
+	}
+	
+}
+
+
+
+
+
+
+
+
+
+

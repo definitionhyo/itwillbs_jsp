@@ -1,0 +1,104 @@
+package controller;
+
+import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import action.Action;
+import action.BoardListAction;
+import action.BoardWriteProAction;
+import svc.BoardWriteProService;
+import vo.ActionForward;
+
+@WebServlet("*.bo")
+public class BoardFrontController extends HttpServlet {
+
+	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("BoardFrontController");
+		
+		/*
+		 * "/BoardWriteForm.bo" 서블릿 주소 요청 시
+		 * board/board_write_form.jsp 페이지로 포워딩(Dispatch)
+		 * ----------------------------------------------------
+		 * 
+		 * "/BoardList.bo" 서블릿 주소 요청 시
+		 * BoardListAction - execute() 메서드를 호출하여 
+		 * board/board_list.jsp 페이지로 포워딩(Dispatch)
+		 * ----------------------------------------------------
+		 * "/BoardWritePro.bo" 서블릿 주소 요청 시
+		 * BoardWriteProAction - execute() 메서드를 호출하여
+		 * "BoardList.bo" 페이지 리다이렉트
+		 */
+		
+		// 공통 변수 선언
+		Action action = null;
+		ActionForward forward = null;
+		
+		// URL 매핑
+		String command = request.getServletPath();
+		System.out.println("command : " + command);
+		
+		if(command.equals("/BoardWriteForm.bo")) {
+			// 뷰페이지로 바로 이동
+			forward = new ActionForward();
+			forward.setPath("board/board_write_form.jsp");
+			forward.setRedirect(false); // Dispatch
+		} else if(command.equals("/BoardList.bo")) {
+			// 비즈니스 로직 처리
+			action = new BoardListAction();
+			forward = action.execute(request, response);
+		} else if(command.equals("/BoardWritePro.bo")) {
+			action = new BoardWriteProAction();
+			forward = action.execute(request, response);
+			
+			BoardWriteProService service = new BoardWriteProService();
+			service.registBoard();
+			
+		}
+		
+		
+		
+		
+		// 공통으로 포워딩 작업 처리
+		if(forward != null) {
+			if(forward.isRedirect()) {
+				response.sendRedirect(forward.getPath());
+			} else {
+				RequestDispatcher dispatcher = request.getRequestDispatcher(forward.getPath());
+				dispatcher.forward(request, response);
+			}
+		}
+		
+		
+		
+		
+	}
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doProcess(request, response);
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doProcess(request, response);
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

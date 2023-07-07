@@ -1,0 +1,74 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	function checkName(name) {
+		let regex = /^[가-힣]{2,5}$;
+		if(regex.exec(name)) {
+			document.querySelector("#checkNameResult").innerHTML = "사용 가능";
+			document.querySelector("#checkNameResult").style.color = "green";
+		} else { 
+			document.querySelector("#checkNameResult").innerHTML = "사용 불가능";
+			document.querySelector("#checkNameResult").style.color = "red";
+		}
+	}
+
+</script>
+
+
+
+
+</head>
+<body>
+	<h1>test1.jsp - 정규표현식</h1>
+	<form action="#">
+		이름 <input type="text" name="name" id="name" placeholder="한글2~5글자" onchange="ceckName(this.value)">
+		<span id="checkNameResult"></span><br>
+		
+		전화번호
+		<input type="text" name="phone" id="phone" placeholder="000-0000-00000 형식" onchange="checkPhone(this.value)">
+		<span id="checkPhoneResult"></span><br>
+		
+		자기소개 <textarea rows="5" cols="20" id="intro" onchange="checkIntro(this.value)"></textarea>
+		<div id="checkIntroResult"></div><br>
+	</form>
+
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

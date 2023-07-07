@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="test5.js"></script>
+<script type="text/javascript">
+	/*
+	4. 매개변수도 있고, 리턴값도 있는 함수
+	- 함수 호출 시 값(= 전달인자)을 전달하고, 함수 종료 시 결과값을 리턴하는 함수
+	- 단, 매개변수는 복수개 지정이 가능하지만, 리턴값은 하나만 리턴 가능
+	*/
+	
+	// callSister() 함수 정의
+	// => 파라미터 : 정수 1개(money)
+	function callSister(money) {
+		document.write("동생 : 오빠가 과자 사오라고 " + money + "원을 줬다!<br>");
+		
+		money -= 200;
+		let snack = "새우깡";
+		
+		document.write("동생 : " + snack + " 사고 " + money + "원이 남았다!<br>");
+		
+		// 구입한 과자를 외부로 리턴
+		return snack; // return "새우깡"; 도 가능
+	}
+	
+	
+	document.write("동생아! 1000원 줄테니 내 새우깡 좀 사온나!<br>");
+	// callSister() 함수 호출 => 정수 1000 전달
+	// => 함수 실행 후 리턴값을 전달받아 변수에 저장 후 출력
+	let mySnack = callSister(1000);
+	document.write("동생이 사다준 것 : " + mySnack + "<br>");
+	
+	document.write("<hr>");
+	// --------------------------------------------------------------------------
+	// 정수 2개(num1, num2)를 전달받아 합계 계산 후 리턴하는 함수 sum() 정의
+	function sum(num1, num2) {
+		document.write("num1 = " + num1 + ", num2 = " + num2 + "<br>");
+		return num1 + num2;
+	}
+	
+	// 함수 sum() 을 호출하여 정수 2개 전달한 후 리턴값을 저장한 뒤 출력
+	// ex) 10, 20 전달 시 30 리턴받아 출력하기
+	let result = sum(10, 20);
+	document.write("result = " + result);
+	document.write("<hr>");
+	// ==================================================================
+	// test5.js 파일의 login() 함수 호출
+	// => 아이디, 패스워드 전달하여 로그인 판별 결과를 리턴받아 출력
+	// => 파라미터 : 아이디, 패스워드   리턴값 : boolean 타입(true 또는 false)
+	// => 함수 내에서 아이디와 패스워드가 일치하면 true 값을 리턴하고, 아니면 false 값을 리턴
+	// => 따라서, 호출한 곳에서는 리턴받은 결과값이 true 이면 "로그인 성공!" 출력, 
+	//    아니면 "로그인 실패!" 출력
+// 	let isLoginSuccess = login("admin", "1234"); // 성공
+// 	let isLoginSuccess = login("admin", "1111"); // 실패
+	let isLoginSuccess = login("hong", "1234"); // 실패
+	
+	if(isLoginSuccess) { // 로그인 성공(if(isLoginSuccess == true) 와 동일한 조건식)
+		document.write("로그인 성공!<br>");
+	} else { // 로그인 실패
+		document.write("로그인 실패!<br>");
+	}
+	
+	if(!isLoginSuccess) { // 로그인 실패(if(isLoginSuccess == false) 와 동일한 조건식)
+		document.write("로그인 실패!<br>");
+	} else { // 로그인 성공
+		document.write("로그인 성공!<br>");
+	}
+	
+</script>
+</head>
+<body>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+

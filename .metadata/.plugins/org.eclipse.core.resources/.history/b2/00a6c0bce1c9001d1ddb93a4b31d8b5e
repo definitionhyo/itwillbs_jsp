@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+
+//form 내의 요서접근방봅
+//document.form태그의name속성값.접근할태그의name속성값.속성명
+//document.form태그의name속성값.접근할태그의name속성값.메서드명()
+	function requestFocus() {
+		document.fr.id.focus();
+	}
+
+	function showInfo() {
+		document.querySelector("#infoArea").innerHTML =
+			document.fr.id.value + "<br>" +
+			document.fr.passwd.value + "<br>" +
+			document.fr.ta.value + "<br>";
+	}
+
+	function showInfo() {
+		
+	}
+
+</script>
+</head>
+<body>
+	<h1>test14.html - form 태그 이벤트</h1>
+	<form action="test14_2.html" name="fr">
+		아이디 <input type="text" name="id" required="required">
+		<input type="button" value="focus()" onclick="requestFocus()">
+		<input type="button" value="select()" onclick="document.fr.id.select()">
+		<br>
+		패스워드 <input type="password" name="passwd" required="required">
+		<br>
+		자기소개 <textarea rows="5" cols="20" name="ta" required="required"></textarea>
+		<input type="button" value="입력값 출력" onclick="showInfo()">
+		<input type="button" value="입력값 확인" onclick="check()">
+		<input type="submit" value="회원가입">
+	</form>
+</body>
+</html>

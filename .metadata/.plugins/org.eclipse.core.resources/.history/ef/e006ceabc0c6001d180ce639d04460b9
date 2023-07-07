@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>document 객체 기초</title>
+<script type="text/javascript">
+	/*
+	[ window 객체의 하위 객체 - document ]
+	- HTML 문서 정보(내용)를 관리하는 객체
+	- 문서 정보 확인, 내용 변경 등의 작업 수행 가능
+	- 속성 : title, bgColor, fgColor 등
+	- 메서드 : write() 등
+	*/
+	function func1() {
+		// HTML 문서 제목(title 태그 내용) 확인
+		alert(document.title);
+	}
+	
+	function func2() {
+		// HTML 문서 제목(title 태그 내용) 변경(= 제목표시줄 내용 변경 = title 속성값 변경)
+		document.title = "변경된 title 내용"
+	}
+	
+	function func3() {
+		
+	}
+	
+	function func4() {
+		
+	}
+
+</script>
+</head>
+<body>
+	<h1>test7.html - document</h1>
+	<input type="button" value="문서 제목 출력" onclick="func1()"><br>
+	<input type="button" value="문서 제목 변경" onclick="func2()"><br>
+	<input type="button" value="문서 배경색 출력" onclick="func3()"><br>
+	<input type="button" value="문서 배경색 변경" onclick="func4()"><br>
+</body>
+</html>

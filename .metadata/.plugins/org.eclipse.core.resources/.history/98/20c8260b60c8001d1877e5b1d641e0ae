@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+// 	let btnChangeImg = document.querySelector("#btnChangeImg");
+// 	alert(btnChangeImg); // null
+	// => 위의 코드가 실행되는 시점에는 body 태그 내의 요소들이 로딩되기 전이므로
+	//    특정 대상 요소 지정 시 null 값이 리턴되어 요소에 접근 불가
+	// => 따라서, body 영역 로딩 지점보다 위에서 해당 요소에 접근해야할 경우
+	//    onload 이벤트를 사용하여 body 영역 로딩이 끝난 후에 접근하도록 해야한다!
+	//    (또는 버튼 등을 클릭했을 때 동작하는 이벤트로 처리도 가능)
+	function load() {
+		alert("onload 이벤트");
+	}
+	
+</script>
+</head>
+<body onload="load()"> <!-- body 영역 로딩이 끝나면 load() 함수가 자동으로 호출됨 -->
+	<h1>test12.html</h1>
+	<!-- 이미지교체 및 복원 버튼 클릭 시 기존에 표시된 이미지를 다른 이미로 대체(교체) -->
+	<!-- 대상 요소를 선택하여 src 속성값 변경하면 이미지 변경됨 -->
+	<!-- 교체버튼 클릭 시 2.jpg 로 변경하고, 복원버튼 클릭 시 1.jpg 로 변경 -->
+	<!-- 이미지 마우스 가져다 대면(오버) "4.jpg", 마우스 빼면(아웃) "5.jpg" 로 교체 -->
+	<img src="1.jpg" id="img" width="150" height="150"><br>
+	<button id="btnChangeImg">이미지교체</button>
+	<button id="btnRecoveryImg">이미지복원</button>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+// 	let btnChangeImg = document.querySelector("#btnChangeImg");
+// 	alert(btnChangeImg); // null
+	// => 위의 코드가 실행되는 시점에는 body 태그 내의 요소들이 로딩되기 전이므로
+	//    특정 대상 요소 지정 시 null 값이 리턴되어 요소에 접근 불가
+	// => 따라서, body 영역 로딩 지점보다 위에서 해당 요소에 접근해야할 경우
+	//    onload 이벤트를 사용하여 body 영역 로딩이 끝난 후에 접근하도록 해야한다!
+	//    (또는 버튼 등을 클릭했을 때 동작하는 이벤트로 처리도 가능)
+	function load() {
+// 		alert("onload 이벤트");
+		let btnChangeImg = document.querySelector("#btnChangeImg");
+		alert(btnChangeImg); // [object HTMLButtonElement]
+		// => body 태그의 onload 이벤트(속성)에 의해 body 영역 로딩이 끝난 후
+		//    load() 함수가 호출되므로 body 태그보다 스크립트가 위에 위치하더라도
+		//    body 영역 요소의 로딩이 끝난 시점에 자바스크립트 코드가 실행된다!
+		// => 따라서, HTMLButtonElement 객체가 생성되어 있는 상태로 접근이 가능하다!
+	}
+	
+	// body 태그에 onload="load()" 이벤트 지정 대신 window.onload 이벤트로 동일한 처리
+	// => window.onload = 함수호출 또는 익명함수 정의
+	// => 만약, 특정 함수를 한 번만 사용 후 더 이상 호출할 일이 없을 경우
+	//    별도의 함수 정의 없이 익명함수 형태로 정의 가능함
+	//    익명함수 정의 문법 : function() {}
+// 	window.onload = load(); // 특정 함수를 호출할 경우
+	window.onload = function() {
+		// 이 함수는 onload 이벤트가 발생하면 자동으로 호출되는 함수
+		// => 단, 함수의 이름이 없으므로 외부에서 이 함수를 호출할 수 없다!
+		//    즉, onload 이벤트 전용 함수로 사용됨
+		let btnChangeImg = document.querySelector("#btnChangeImg");
+// 		alert(btnChangeImg); // [object HTMLButtonElement]
+
+		// HTML 태그 내에서 onXXX 으로 이벤트 연결이 가능하지만
+		// 자바스크립트에서도 대상 요소에 대해 이벤트 연결(등록)할 수 있다!
+		// < 기본 문법 > 대상요소.onxxx = 실행할함수명;
+		// => 주의! 함수를 요소 이벤트에 전달하는 과정이므로 호출 형식이 아니다!
+		//    즉, 함수명() 가 아닌 함수명만 지정해야한다!
+		// ----------------------------------------
+		// 이미지 교체 버튼(btnChangeImg 변수에 저장된 객체) 클릭했을 때 이벤트 처리
+		btnChangeImg.onclick = changeImage;
+		// => changeImage 함수를 onclick 이벤트에 미리 전달해두고
+		//    해당 이벤트가 발생하면 전달된 함수가 호출됨
+		// => 주의! changeImage 함수명만 지정하지 않고 함수 호출 형태로 지정할 경우
+		//    해당 함수가 즉시 실행되므로 onxxx 이벤트 처리가 아니게 된다!
+// 		btnChangeImg.onclick = changeImage(); // 버튼 클릭 없이 changeImage() 함수가 호출됨
+
+		// --------------------------------------------------------------
+		// 이미지 복원 버튼(btnRecoveryImg 변수에 저장된 객체) 클릭했을 때 이벤트 처리
+		// => changeImage2 함수를 실행하여 1.jpg 로 src 속성값을 변경
+// 		document.querySelector("#btnRecoveryImg").onclick = changeImage2;
+		// 만약, 함수를 한 번만 사용 후 더 이상 호출이 없을 경우 = 1회성 함수일 경우
+		// 별도로 함수를 정의하지 않고, 이벤트 연결 시 익명 함수 형태로 구현까지 모두 작성 가능
+		// 객체명.onclick = function() { 함수 호출 시 실행할 코드들... }
+		// => 주의! function 키워드 뒤에 함수 이름을 명시하지 않는다!
+		//    = 익명 함수(Anonymous function) 라고 한다!
+		document.querySelector("#btnRecoveryImg").onclick = function() {
+			document.querySelector("#img").src = "1.jpg";
+			// => changeImage2() 함수 호출 결과와 동일
+		};
+		
+		// --------------------------------
+		// id 선택자가 "name" 인 요소에 onfocus 와 onblur 이벤트 연결
+		// => 익명함수를 사용하여 이벤트 핸들링(처리)
+		// => 포커스가 요청되면 요소의 배경색을 "SKYBLUE" 로 변경하고
+		//    포커스가 해제되면 요소의 배경색을 "WHITE" 로 변경
+		let elemName = document.querySelector("#name");
+		
+		elemName.onfocus = function() {
+			elemName.style.background = "SKYBLUE";
+		}
+		
+		elemName.onblur = function() {
+			elemName.style.background = "WHITE";
+		}
+		
+		
+		
+	}; // window.onload 이벤트 끝
+	
+	// ------------------- 사용자 정의 함수 -------------------
+	// changeImage() 함수 정의
+	// => "img" 라는 id 선택자 요소 가져와서 src 속성값을 2.jpg 로 변경
+	function changeImage() {
+		document.querySelector("#img").src = "2.jpg";
+	}
+	
+	function changeImage2() {
+		document.querySelector("#img").src = "1.jpg";
+	}
+	
+</script>
+</head>
+<!-- body 영역 로딩이 끝나면 load() 함수가 자동으로 호출됨 -->
+<!-- <body onload="load()">  -->
+<body> <!-- onload 속성을 지정하는 대신 자바스크립트 window.onload 로 이벤트 처리할 경우 -->
+	<h1>test12.html</h1>
+	<!-- 이미지교체 및 복원 버튼 클릭 시 기존에 표시된 이미지를 다른 이미로 대체(교체) -->
+	<!-- 대상 요소를 선택하여 src 속성값 변경하면 이미지 변경됨 -->
+	<!-- 교체버튼 클릭 시 2.jpg 로 변경하고, 복원버튼 클릭 시 1.jpg 로 변경 -->
+	<!-- 이미지 마우스 가져다 대면(오버) "4.jpg", 마우스 빼면(아웃) "5.jpg" 로 교체 -->
+	<img src="1.jpg" id="img" width="150" height="150"><br>
+	<button id="btnChangeImg">이미지교체</button>
+	<button id="btnRecoveryImg">이미지복원</button>
+	<hr>
+	이름 : <input type="text" id="name">
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

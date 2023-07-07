@@ -1,0 +1,15 @@
+package svc;
+
+import vo.MemberBean;
+
+public class MemberLoginProService {
+	
+	public boolean isCorrectUser(MemberBean member) {
+		// 1. 작업 결과를 리턴할 변수 선언
+		boolean isCorrectUser = false;
+		
+		
+		return false;
+	}
+
+}

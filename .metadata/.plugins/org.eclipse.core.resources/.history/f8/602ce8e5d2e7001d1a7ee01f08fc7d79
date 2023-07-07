@@ -1,0 +1,10 @@
+package svc;
+
+public class MemberLoginProService {
+
+	public boolean isCorrectUser() {
+		
+		return false;
+	}
+
+}

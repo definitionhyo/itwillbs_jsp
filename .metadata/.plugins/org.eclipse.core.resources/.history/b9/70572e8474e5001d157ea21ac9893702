@@ -1,0 +1,24 @@
+package controller;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import action.Action;
+import vo.ActionForward;
+
+public class BoardWriteListProAction implements Action {
+
+	@Override
+	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
+		System.out.println("BoardWriteListProAction");
+		//1 actionforward 객체만들고 , 2. 인스턴스만들고 3, set으로 설정
+		
+		ActionForward forward = null;
+		forward = new ActionForward();
+		forward.setPath("board/board_write_list.stp");
+		forward.setRedirect(false);
+		
+		return forward;
+	}
+
+}

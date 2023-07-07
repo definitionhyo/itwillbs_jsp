@@ -1,0 +1,100 @@
+package controller;
+
+import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import action.MemberJoinProAction;
+import action.MemberLoginProAction;
+import vo.ActionForward;
+
+@WebServlet("*.me")
+public class MemberFrontController extends HttpServlet {
+
+	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("MemberFrontController");
+		
+		// POST 방식 요청에 대한 한글 인코딩 처리
+		request.setCharacterEncoding("UTF-8");
+		
+		// 공통으로 사용할 변수 선언
+		ActionForward forward = null;
+		
+		// 서블릿 주소 추출하기
+		String command = request.getServletPath();
+		System.out.println("command : " + command); // "/XXX.me"
+		
+		// 추출된 서블릿 주소(command)를 if문을 통해 문자열 비교 수행 후
+		// 각 주소에 따른 액션(작업) 요청
+		if(command.equals("/MemberJoinForm.me")) {
+//			System.out.println("회원가입 폼!");
+			
+			// 회원가입 폼 출력하는 뷰페이지(member/member_join_form.jsp) 로 포워딩
+			// => 비즈니스 로직(= DB 작업 등) 불필요하므로 뷰페이지로 바로 이동
+			// => Dispatch 방식(주소표시줄 URL 이 변경되지 않음 = MemberJoinForm.me 유지됨)
+			// => 주의! 현재 서블릿 주소가 http://localhost:8080/MVC_Board/MemberJoinForm.me 이며
+			//    컨텍스트 루트(MVC_Board)가 webapp 디렉토리를 가리키므로
+			//    하위 디렉토리(member)까지 명시해야한다!
+			RequestDispatcher dispatcher = 
+					request.getRequestDispatcher("member/member_join_form.jsp");
+			dispatcher.forward(request, response);
+			
+		} else if(command.equals("/MemberLoginForm.me")) {
+			RequestDispatcher dispatcher = 
+					request.getRequestDispatcher("member/member_login_form.jsp");
+			dispatcher.forward(request, response);
+		} else if(command.equals("/MemberJoinPro.me")) {
+			// 회원 가입을 위한 비즈니스 로직 처리 필요
+			// 비즈니스 로직을 처리할 Action 클래스의 인스턴스 생성 후 execute() 메서드 호출
+			// => 파라미터 : HttpServletRequest 객체, HttpServletResponse 객체
+			// => 리턴타입 : ActionForward
+			MemberJoinProAction action = new MemberJoinProAction();
+			ActionForward forward = action.execute(request, response);
+			
+			if(forward.isRedirect()) {
+				// 리다이렉트
+			} else {
+				// 디스패치
+			}
+		} else if(command.equals("/MemberLoginPro.me")) {
+			// 회원 로그인을 위한 비즈니스 로직 처리 필요
+			// 비즈니스 로직을 처리할 Action 클래스의 인스턴스 생성 후 execute() 메서드 호출
+			// => 파라미터 : HttpServletRequest 객체, HttpServletResponse 객체
+			MemberLoginProAction action = new MemberLoginProAction();
+//			XXX aa = action.execute(request, response);
+		}
+		
+		// 공통으로 포워딩 처리(리다이렉트 vs 디스패치)
+		
+		
+		
+	}
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doProcess(request, response);
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doProcess(request, response);
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

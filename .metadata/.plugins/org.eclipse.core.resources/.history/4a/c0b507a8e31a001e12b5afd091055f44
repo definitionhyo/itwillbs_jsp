@@ -1,0 +1,90 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../js/jquery-3.7.0.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$("#btnOk").on("click", function() {
+			let url = "https://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json";
+			let key = "f5eef3421c602c6cb7ea224104795888";
+// 			let targetDt = "20230704";
+			let selectedDate = $("#date").val();
+// 			alert(selectedDate);
+			let objDate = new Date(selectedDate);
+// 			alert(objDate);
+// 			let year = objDate.getFullYear();
+// 			let month = objDate.getMonth() +1 ;
+// 			let day = objDate.getDate();
+// 			alert(year + ", " + month + ", " + day);
+// 			alert(typeof year + ", " + typeof month + ", " + typeof day);
+			
+			let splitDate = selectedDate.split("-");
+			let targetDt = splitDate[0] + splitDate[1] + splitDate[2];
+			alert(targetDt);
+			
+			$.ajax({
+				type: "GET",
+				url: url + "?key=" + key + "&targetDt=" + targetDt,
+				dataType: "json",
+				success: function(data) { // 요청 성공 시	
+					let boxOfficeResult = data.boxOfficeResult;
+// 					$("#resultArea").html(JSON.stringify(boxOfficeResult));
+					let boxOfficeType = boxOfficeResult.boxofficeType;
+					let showRange = boxOfficeResult.showRange;
+// 					$("#resultArea").html(boxOfficeType + ", " + showRange);
+					let dailyBoxOfficeList = boxOfficeResult.dailyBoxOfficeList;
+// 					$("#resultArea").html(JSON.stringify(dailyBoxOfficeList));
+					for(let movie of dailyBoxOfficeList) {
+					$("#resultArea > table").append(
+						"<tr>"
+						+ "<td>" + movie.rank + "</td>"
+						+ "<td>" + movie.movieNm + "</td>"
+						+ "<td>" + movie.openDt + "</td>"
+						+ "<td>" + movie.audiAcc + "</td>"
+						+ "</tr>"
+					);
+				}
+				},
+				error: function() { // 요청 실패 시
+					$("#resultArea").html("<h1>요청 실패!</h1>");
+				}
+			});
+			
+		}); // 버튼 이벤트 끝
+		
+	});
+</script>
+</head>
+<body>
+	<h1>test5_json_movie_list.jsp - 일별 박스오피스</h1>
+	<input type="date" id="date">
+	<input type="button" value="일별 박스오피스 조회" id="btnOk">
+	<div id="resultArea">
+		<table border="1">
+			<tr>
+				<th width="80">현재순위</th>
+				<th width="400">영화명</th>
+				<th width="150">개봉일</th>
+				<th width="100">누적관객수</th>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

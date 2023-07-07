@@ -1,0 +1,9 @@
+package svc;
+
+public class BoardWriteProService {
+
+	public void registBoard() {
+		System.out.println("BoardWriteProService");
+	}
+
+}

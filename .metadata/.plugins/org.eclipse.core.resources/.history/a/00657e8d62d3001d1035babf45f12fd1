@@ -1,0 +1,17 @@
+package jsp07_servlet;
+
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/jsp07_servlet/jsp07_login")
+public class LoginServlet extends HttpServlet {
+	// POST 방식 요청만 처리할 경우 doGet() 메서드는 불필요
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+	}
+
+}

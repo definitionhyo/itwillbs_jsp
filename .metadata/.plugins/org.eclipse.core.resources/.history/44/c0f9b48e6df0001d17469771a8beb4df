@@ -1,0 +1,13 @@
+package svc;
+
+import dao.BoardDAO;
+
+public class BoardModifyProService {
+
+	public BoardDAO modifyBoard() {
+		
+		
+		
+	}
+
+}

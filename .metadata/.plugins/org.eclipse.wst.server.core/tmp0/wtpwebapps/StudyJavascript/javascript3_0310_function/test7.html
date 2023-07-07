@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	/*
+	정수 1개를 입력받아 변수에 저장 후 기존에 저장된 정수(correctNum)와 비교하여 
+	일치 여부 확인한 후 결과를 출력하는 startNumberGame() 함수 정의
+	-------------------------------------------------------------
+	[1단계]
+	1) prompt() 함수를 사용하여 숫자 1개를 입력받아 입력받은 숫자 출력하기
+	----------------
+	[2단계]
+	2) 입력받은 숫자를 기존에 저장된 정수(correctNum)과 비교하여 판별 결과 출력
+	- 기존에 저장된 숫자(정답)가 입력받은 숫자보다 클 경우 : "입력받은 숫자보다 큽니다!" 출력
+	- 기존에 저장된 숫자(정답)가 입력받은 숫자보다 작을 경우 : "입력받은 숫자보다 작습니다!" 출력
+	- 기존에 저장된 숫자(정답)가 입력받은 숫자와 같을 경우 : "정답입니다!" 출력
+	----------------
+	[3단계]
+	반복문 사용
+	1) 정답이 입력받은 숫자보다 작거나 클 경우(정답이 아닐 경우) 다시 숫자 입력받기
+	   => while(true) 문장 사용 시 무한 루프
+	   => 정답일 경우 break 문을 사용하여 while 문 빠져나가기
+	2) 이 때, 정답일 경우 반복문 종료 후 숫자를 입력한 횟수를 계산하여 "x번만에 정답!" 출력
+	*/
+	function startNumberGame() {
+		let correctNum = 10; // 정답
+		
+		// 1단계. 숫자 입력받아 출력
+// 		let num = prompt("정수를 입력하세요.");
+// 		alert("입력된 숫자 : " + num);
+		// --------------------------------------------------
+		// 2단계. 정답(correctNum)과 입력받은 숫자(num) 비교
+// 		if(correctNum > num) { // 정답이 더 클 경우
+// 			alert("입력하신 숫자(" + num + ") 보다 정답이 큽니다!");
+// 		} else if(correctNum < num) { // 정답이 더 작을 경우
+// 			alert("입력하신 숫자(" + num + ") 보다 정답이 작습니다!");
+// 		} else if(correctNum == num) { // 정답일 경우(else 로 대체 가능)
+// 			alert("입력하신 숫자(" + num + ") 가 정답입니다!");
+// 		}
+		
+		// ----------------------------------------------------
+		// 3단계. 반복문을 통한 반복 작업 수행
+		let count = 0; // 카운트 변수(반복문 바깥에 위치해야함)
+		
+		while(true) {
+			// 반복문 시작 시 정수 1개 입력받기
+			let num = prompt("정수를 입력하세요.");
+			
+			// 입력할 때마다 카운트 변수 1 증가
+			count++;			
+			
+			if(correctNum > num) { // 정답이 더 클 경우
+				alert("입력하신 숫자(" + num + ") 보다 정답이 큽니다!");
+				// continue 문을 사용하여 while 문 시작점으로 점프 가능(생략)
+			} else if(correctNum < num) { // 정답이 더 작을 경우
+				alert("입력하신 숫자(" + num + ") 보다 정답이 작습니다!");
+				// continue 문을 사용하여 while 문 시작점으로 점프 가능(생략)
+			} else if(correctNum == num) { // 정답일 경우(else 로 대체 가능)
+				alert("입력하신 숫자(" + num + ") 가 정답입니다!");
+				break; // 현재 while 문 종료하고 빠져나감
+			}
+			
+		} // while 문 끝
+		
+		// break 문을 만나면 이동하는 위치
+		document.write("숫자 게임을 종료합니다.<br>");
+		document.write("입력 횟수 : " + count + "회<br>");
+	}
+</script>
+</head>
+<body>
+	<input type="button" value="숫자게임 시작" onclick="startNumberGame()">
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

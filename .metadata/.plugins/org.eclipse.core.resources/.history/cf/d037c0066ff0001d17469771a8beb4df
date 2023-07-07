@@ -1,0 +1,45 @@
+package action;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import dao.BoardDAO;
+import svc.BoardDeleteProService;
+import svc.BoardDetailService;
+import svc.BoardModifyProService;
+import vo.ActionForward;
+import vo.BoardBean;
+
+public class BoardModifyProAction implements Action {
+
+	@Override
+	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
+		System.out.println("BoardModifyProAction");
+		ActionForward forward = null;
+		
+		BoardBean board = new BoardBean();
+		board.setBoard_num(Integer.parseInt(request.getParameter("board_num")));
+		board.setBoard_name(request.getParameter("board_name"));
+		board.setBoard_pass(request.getParameter("board_pass"));
+		board.setBoard_subject(request.getParameter("board_subject"));
+		board.setBoard_content(request.getParameter('board_content"));
+		System.out.println(board);
+		
+		
+		forward = new ActionForward();
+		forward.setPath("BoardDetail.bo?board_num=" + board_num + "&pageNum=" + request.getParameter("pageNum"));
+		forward.setRedirect(false);
+		
+		
+		
+		return forward;
+	}
+
+}
+		

@@ -1,0 +1,181 @@
+package jsp11_servlet;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+// 데이터베이스 관련 작업을 직접적으로 수행하기 위한 DAO 클래스 정의
+// => 각각의 구문에 따른 작업을 메서드 단위로 분리하여 DB 작업 요청 처리
+public class StudentDAO {
+	
+	// 회원 가입 작업을 수행하는 insert() 메서드 정의
+	// => 파라미터 : 번호(idx), 이름(name)   리턴타입 : int(insertCount)
+	public int insert(int idx, String name) {
+		// 최종적으로 리턴할 int 타입 변수 선언
+		int insertCount = 0;
+		
+		// 데이터베이스 사용을 위한 변수 선언
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		// JdbcUtil 클래스에서 DBCP 를 통해 관리되는 Connection 객체 리턴받기
+		// => 1단계 & 2단계에 해당
+		con = JdbcUtil.getConnection();
+		
+		try {
+			// 3단계. SQL 구문 작성 및 전달
+			// jsp08_student 테이블에 번호, 이름 추가 - INSERT
+			
+			String sql = "INSERT INTO jsp08_student VALUES (?, ?)";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, idx);
+			pstmt.setString(2, name);
+			
+			// 4단계. SQL 구문 실행 및 결과 처리
+			insertCount = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// DB 연결(2단계) 실패 처리는 JdbcUtil 클래스의 getConnection() 메서드에서
+			// SQLException 예외로 처리됨
+			System.out.println("SQL 구문 오류 발생!");
+			e.printStackTrace();
+		} finally {
+			// DB 자원 반환
+			// => JdbcUtil 클래스의 static 메서드 close() 메서드 호출하여
+			//    반환할 자원(객체)를 파라미터로 전달
+			JdbcUtil.close(pstmt);
+			JdbcUtil.close(con);
+		}
+		
+		// 모든 작업 완료 후 작업 결과가 저장된 int 타입(insertCount) 값 리턴
+		return insertCount;
+		
+	}
+	// -----------------------------------------------------------------------
+	// 회원 가입 작업을 수행하는 insert() 메서드 정의
+	// => 파라미터 : StudentDTO(student)   리턴타입 : int(insertCount)
+	// => 위의 insert() 메서드 주석처리 없이도 메서드 오버로딩으로 오류 발생X
+	public int insert(StudentDTO student) {
+		// 최종적으로 리턴할 int 타입 변수 선언
+		int insertCount = 0;
+		
+		// 데이터베이스 사용을 위한 변수 선언
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		// JdbcUtil 클래스에서 DBCP 를 통해 관리되는 Connection 객체 리턴받기
+		// => 1단계 & 2단계에 해당
+		con = JdbcUtil.getConnection();
+		
+		try {
+			// 3단계. SQL 구문 작성 및 전달
+			// jsp08_student 테이블에 번호, 이름 추가 - INSERT
+			String sql = "INSERT INTO jsp08_student VALUES (?, ?)";
+			pstmt = con.prepareStatement(sql);
+			// 문장에 결합될 데이터가 로컬 변수에 직접 저장되어 있는 것이 아니라
+			// StudentDTO 객체에 저장되어 있으므로 Getter 메서드로 꺼낼 수 있다!
+			pstmt.setInt(1, student.getIdx());
+			pstmt.setString(2, student.getName());
+			
+			// 4단계. SQL 구문 실행 및 결과 처리
+			insertCount = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// DB 연결(2단계) 실패 처리는 JdbcUtil 클래스의 getConnection() 메서드에서
+			// SQLException 예외로 처리됨
+			System.out.println("SQL 구문 오류 발생!");
+			e.printStackTrace();
+		} finally {
+			// DB 자원 반환
+			// => JdbcUtil 클래스의 static 메서드 close() 메서드 호출하여
+			//    반환할 자원(객체)를 파라미터로 전달
+			JdbcUtil.close(pstmt);
+			JdbcUtil.close(con);
+		}
+		
+		// 모든 작업 완료 후 작업 결과가 저장된 int 타입(insertCount) 값 리턴
+		return insertCount; // DbcpInsertProServlet 으로 리턴
+		
+	}
+	
+	
+	// 학생 목록 조회를 위한 selectStudentList() 메서드 정의
+	// => 파라미터 : 없음   리턴타입 : List<StudentDTO>(studentList)
+	public List<StudentDTO> selectStudentList() {
+		// 학생 1명의 정보가 저장되는 StudentDTO 객체 여러개(= 복수개의 레코드)를 
+		// 한꺼번에 저장할 java.util.List 타입 변수 선언
+		// => 제네릭 타입으로 StudentDTO 타입 지정(List<저장될 객체 타입> 형태로 선언)
+		//    (이제부터 List 객체에 저장되는 객체는 무조건 StudentDTO 객체만 저장 가능!)
+		List<StudentDTO> studentList = null;
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		con = JdbcUtil.getConnection();
+		
+		try {
+			// 3단계.
+			// jsp08_student 테이블의 모든 레코드 조회
+			String sql = "SELECT * FROM jsp08_student";
+			pstmt = con.prepareStatement(sql);
+			
+			// 4단계.
+			rs = pstmt.executeQuery();
+			
+			// 복수개의 레코드(StudentDTO 객체 여러개)가 저장될 ArrayList 객체를 생성
+			// => 단, 1개의 ArrayList 객체에 복수개의 StudentDTO 객체가 저장되므로
+			//    최소한 while 문보다 윗쪽에서 객체가 생성되어야 한다! (반복되면 X)
+			// => 또한, ArrayList 타입 객체를 List 타입으로 업캐스팅하여 사용
+			studentList = new ArrayList<StudentDTO>();
+			
+			// while 문을 사용하여 다음 레코드가 존재할 동안(rs.next() 가 true) 반복
+			while(rs.next()) {
+				// ResultSet 객체의 getXXX() 메서드로 각 컬럼 데이터 접근
+				int idx = rs.getInt("idx");
+				String name = rs.getString("name");
+//				System.out.println("번호 : " + idx + ", 이름 : " + name);
+				
+				// 학생 1명의 정보를 저장할 StudentDTO 타입 인스턴스 생성
+				StudentDTO student = new StudentDTO();
+				
+				// StudentDTO 인스턴스에 번호와 이름 저장
+				student.setIdx(idx);
+				student.setName(name);
+				
+				// 여러개의 StudentDTO 객체(= 복수개의 레코드)를 저장할
+				// List 객체에 StudentDTO 객체 추가(저장)
+				// => List 객체의 add() 메서드를 호출하여 저장할 데이터를 파라미터로 전달
+//				studentList.add("홍길동"); // StudentDTO 타입 외에는 저장 불가능!
+				studentList.add(student); // StudentDTO 타입 객체는 저장 가능!
+				// => 이 작업이 반복되면 최종적으로 StudentDTO 타입 객체 복수개가
+				//    하나의 List(ArrayList) 객체에 차례대로 저장된다!
+			}
+		} catch (SQLException e) {
+			System.out.println("SQL 구문 오류 발생! - DbcpSelectServlet 의 doGet()");
+			e.printStackTrace();
+		} finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+			JdbcUtil.close(con);
+		}
+		
+		// 복수개의 레코드가 저장된 List 객체(studentList) 리턴
+		return studentList; // DbcpSelectServlet 으로 리턴
+	}
+	
+}
+
+
+
+
+
+
+
+
+
+
+

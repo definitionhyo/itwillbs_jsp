@@ -1,0 +1,26 @@
+package svc;
+
+import java.sql.Connection;
+import java.util.List;
+
+import dao.BoardDAO;
+import db.JdbcUtil;
+import vo.BoardBean;
+
+public class BoardListService {
+
+	public List<BoardBean> getBoardList() {
+		System.out.println("BoardListService");
+		
+		Connection con = JdbcUtil.getConnection();
+		
+		BoardDAO dao = BoardDAO.getInstance();
+		dao.setConnection(con);
+		
+		
+		
+		
+		return null;
+	}
+
+}

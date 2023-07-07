@@ -1,0 +1,82 @@
+package action;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import vo.ActionForward;
+import vo.MemberBean;
+
+public class MemberJoinProAction implements Action{
+
+	@Override
+	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
+		System.out.println("MemberJoinProAction");
+		
+		ActionForward forward = null;
+		
+//		String name = request.getParameter("name");
+//		System.out.println("이름 : " + name);
+//		MemberBean 객체 생성 후 파라미터 데이터 저장
+		MemberBean bean = null;
+		bean.setEmail(toString().concat("email1"+"email2"));
+		bean.setGender("gender");
+		bean.setHobby("hobby");
+		bean.setId("id");
+		bean.setIdx(Integer.parseInt("idx"));
+		bean.setJob("job");
+		bean.setJumin(toString().concat("jumin1"+"jumin2"));
+		bean.setMotivation("motivation");
+		bean.setName("name");
+		bean.setPasswd("passwd");
+		
+		
+		boolean isJoinSuccess = true;
+		
+		if(!isJoinSuccess) {
+			
+		} else {
+			forward = new ActionForward();
+			forward.setPath("./");
+			forward.setRedirect(true);
+		}
+		
+		return forward; // -> memberfrontcontroller 로 리턴
+	}
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

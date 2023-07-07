@@ -1,0 +1,113 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>MVC 게시판</title>
+<style type="text/css">
+<<<<<<<< HEAD:.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/MVC_Board/board/board_modify_form.jsp
+	#modifyForm {
+========
+	#replyForm {
+>>>>>>>> 0963fa803aa0bbb5c2d9bea2d5eb3e183f443701:.metadata/.plugins/org.eclipse.core.resources/.history/4c/3065c20978f0001d17469771a8beb4df
+		width: 500px;
+		height: 450px;
+		border: 1px solid red;
+		margin: auto;
+	}
+	
+	h1 {
+		text-align: center;
+	}
+	
+	table {
+		margin: auto;
+		width: 450px;
+	}
+	
+	.td_left {
+		width: 150px;
+		background: orange;
+		text-align: center;
+	}
+	
+	.td_right {
+		width: 300px;
+		background: skyblue;
+	}
+	
+	#commandCell {
+		text-align: center;
+	}
+</style>
+</head>
+<body>
+<<<<<<<< HEAD:.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/MVC_Board/board/board_modify_form.jsp
+	<!-- 게시판 글 수정 -->
+	<section id="modifyForm">
+		<h1>게시판 글 수정</h1>
+========
+	<!-- 게시판 답글 작성 -->
+	<section id="replyForm">
+		<h1>게시판 답글 작성</h1>
+>>>>>>>> 0963fa803aa0bbb5c2d9bea2d5eb3e183f443701:.metadata/.plugins/org.eclipse.core.resources/.history/4c/3065c20978f0001d17469771a8beb4df
+		<form action="" name="boardForm" method="post">
+			<table>
+				<tr>
+					<td class="td_left"><label for="board_name">글쓴이</label></td>
+<<<<<<<< HEAD:.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/MVC_Board/board/board_modify_form.jsp
+					<td class="td_right"></td>
+========
+					<td class="td_right">
+						<input type="text" name="board_name" required="required" />
+					</td>
+>>>>>>>> 0963fa803aa0bbb5c2d9bea2d5eb3e183f443701:.metadata/.plugins/org.eclipse.core.resources/.history/4c/3065c20978f0001d17469771a8beb4df
+				</tr>
+				<tr>
+					<td class="td_left"><label for="board_pass">비밀번호</label></td>
+					<td class="td_right"></td>
+				</tr>
+				<tr>
+					<td class="td_left"><label for="board_subject">제목</label></td>
+<<<<<<<< HEAD:.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/MVC_Board/board/board_modify_form.jsp
+					<td class="td_right"></td>
+========
+					<td class="td_right">
+						<input type="text" name="board_subject" required="required" />
+					</td>
+>>>>>>>> 0963fa803aa0bbb5c2d9bea2d5eb3e183f443701:.metadata/.plugins/org.eclipse.core.resources/.history/4c/3065c20978f0001d17469771a8beb4df
+				</tr>
+				<tr>
+					<td class="td_left"><label for="board_content">내용</label></td>
+					<td class="td_right"></td>
+				</tr>
+<<<<<<<< HEAD:.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/MVC_Board/board/board_modify_form.jsp
+				<tr>
+					<td class="td_left"><label for="board_file">파일</label></td>
+					<!-- 파일 수정 기능은 제외(파일명만 표시) -->
+					<td class="td_right"></td>
+				</tr>
+			</table>
+			<section id="commandCell">
+				<input type="submit" value="수정">&nbsp;&nbsp;
+========
+			</table>
+			<section id="commandCell">
+				<input type="submit" value="답글등록">&nbsp;&nbsp;
+>>>>>>>> 0963fa803aa0bbb5c2d9bea2d5eb3e183f443701:.metadata/.plugins/org.eclipse.core.resources/.history/4c/3065c20978f0001d17469771a8beb4df
+				<input type="reset" value="다시쓰기">&nbsp;&nbsp;
+				<input type="button" value="취소" onclick="history.back()">
+			</section>
+		</form>
+	</section>
+</body>
+</html>
+
+
+
+
+
+
+
+

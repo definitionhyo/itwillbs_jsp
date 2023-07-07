@@ -1,0 +1,44 @@
+package jsp08_jdbc;
+
+import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/JdbcConnectMain")
+public class JdbcConnectMainServlet extends HttpServlet {
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("JdbcConnectMainServlet");
+		
+		/*
+		 * 서블릿 주소 매핑을 "/JdbcConnectMain" 으로 수행하는 경우
+		 * 실제 주소가 "http://localhost:8080/StudyJSP/JdbcConnectMain" 이다.
+		 * 이 때, StudyJSP(컨텍스트 루트) 에 해당하는 JSP 폴더 위치는 webapp 이므로
+		 * webapp/jsp08_jdbc/jdbc_connect_main.jsp 페이지를 대상으로 지정하려면
+		 * webapp 폴더 기준 나머지 경로 및 파일명을 명시해야한다!
+		 */
+		String target = "jsp08_jdbc/jdbc_connect_main.jsp";
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher(target);
+		dispatcher.forward(request, response);
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

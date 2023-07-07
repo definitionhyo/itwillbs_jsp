@@ -1,0 +1,57 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../js/jquery-3.7.0.js"></script>
+<script type="text/javascript">
+
+</script>
+</head>
+<body>
+	<h1>jQuery - test3.jsp</h1>
+	<hr>
+	<h3 id="idSelector">id 선택자</h3>
+	<h3 class="classSelector">class 선택자</h3>
+	<h3 class="classSelector">class 선택자2</h3>
+	<hr>
+	<table border="1">
+		<tr><td>번호</td><td>제목</td></tr>
+		<tr><td>1</td><td>1번제목</td></tr>
+		<tr><td>2</td><td>2번제목</td></tr>
+		<tr><td>3</td><td>3번제목</td></tr>
+		<tr><td>4</td><td>4번제목</td></tr>
+	</table>
+	<hr>
+	<div id="inputBox">
+		<input type="text" value="admin" id="id">
+		<input type="password" value="1234" id="passwd"><br>
+		<textarea rows="5" cols="20" readonly="readonly"></textarea>
+		<textarea rows="5" cols="20" id="inputData"></textarea>
+	</div>
+	<hr>
+	<div id="divBox">
+		<div>
+			1번 div 태그
+			<div>1-1번 div 태그</div>
+			<div>1-2번 div 태그</div>
+		</div>
+		<span>span 태그</span>
+		<div>2번 div 태그</div>
+		<div>
+			3번 div 태그
+			<div>3-1번 div 태그</div>
+			<div>3-2번 div 태그</div>
+		</div>
+	</div>
+	<hr>
+	<select id="selectBox">
+		<option value="JAVA">JAVA</option>
+		<option value="JSP">JSP</option>
+		<option value="Spring Framework">Spring Framework</option>
+	</select>
+	<input type="text" id="selectResult">
+</body>
+</html>

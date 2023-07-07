@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>test11.html</h1>
+	<input type="button" value="클릭" onclick="">
+	<button onclick="">클릭2</button>
+	<hr>
+	<button onclick="">마우스를 가져다 대세요</button>
+	<div id="mouseResultArea"></div>
+	<hr>
+	<img src="1.jpg" id="img" width="150" height="150"><br>
+	<button onclick="">이미지교체</button>
+	<button onclick="">이미지복원</button>
+	
+	
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,71 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../js/jquery-3.7.0.js"></script>
+<script type="text/javascript">
+$(function() {
+	$("#btnOK").on("click", function() {
+		
+		let url = "https://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json";
+		let key = "f5eef3421c602c6cb7ea224104795888";
+		let targetDt = "20230704";
+		
+		$.ajax({
+			type: "GET",
+			url: url + "?key=" + key + "&targetDt=" + targetDt,
+			dataType: "json"
+			success: function(data) {
+				$("#resultArea").html(JSON.stringify(data));
+					let boxOfficeResult = data.boxOfficeResult;
+					$("#resultArea").html(JSON.stringify(boxOfficeResult));
+				},
+				error: function() {
+					$("#resultArea").html("<h1>요청 실패!</h1>");
+				}
+				
+			});
+			
+		
+		}); // 버튼이벤트끝
+	
+	});
+</script>
+</head>
+<body>
+	<h1>test5_json_movie_list.jsp - 일별박스오피스</h1>
+	<input type="button" value="일별 박스오피스 조회" id="btnOK">
+	<div id="resultArea">
+		<table border="1">
+			<tr>
+				<th width="80">현재순위</th>
+				<th width="400">영화명</th>
+				<th width="150">개봉일</th>
+				<th width="100">누적관객수</th>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

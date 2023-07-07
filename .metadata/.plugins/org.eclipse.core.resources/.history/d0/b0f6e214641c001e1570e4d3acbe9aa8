@@ -1,0 +1,94 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../js/jquery-3.7.0.js"></script>
+<script type="text/javascript">
+	$(function() {
+		let key = "f5eef3421c602c6cb7ea224104795888";
+		// 영화 상세 정보 조회 요청에 사용될 URL 지정
+		// API 페이지 : https://www.kobis.or.kr/kobisopenapi/homepg/apiservice/searchServiceInfo.do?serviceId=searchMovieInfo
+		// 요청 URL 샘플 : http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.json?key=f5eef3421c602c6cb7ea224104795888&movieCd=20124079
+		let detailUrl = "http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.json";
+		
+		// URL 로 전달받은 영화코드(movieCd) 파라미터 가져오기
+		let movieCd = "${param.movieCd}";
+		
+		// AJAX 를 활용하여 영화 상세정보 조회 API 요청
+		$.ajax({
+			type: "GET",
+			url: detailUrl + "?key=" + key + "&movieCd=" + movieCd,
+			dataType: "json",
+			success: function(data) { // 요청 성공 시	
+				// 영화명(국문 - movieNm, 영문 - movieNmEn)
+				// 개봉일(openDt)
+				// 상영시간(showTm)
+				// 감독(directors 배열 내의 peopleNm) - 복수개의 감독 존재 가능
+				// 배우(actors 배열 내의 peopleNm) - 복수개의 배우 존재 가능
+				let movieInfo = data.movieInfoResult.movieInfo;
+// 				alert(JSON.stringify(movieInfo));
+				
+				$("movieNm").html(movieInfo.movieNm + "<br>(" + movieInfo.movieNmEn + ");
+				$("movieDt").html(movieInfo.movieDt);
+				$("showTm").html(movieInfo.showTm);
+				
+// 				$("#resultArea > table").append(
+// 					"<tr>"
+// 					+ "<td>" + movieInfo.movieNm + "<br>(" + movieInfo.movieNmEn + ")" + "</td>"
+// 					+ "<td>" + movieInfo.openDt + "</td>"
+// 					+ "<td>" + movieInfo.showTm + "분</td>"
+// // 					+ "<td>" + movieInfo.audiAcc + "</td>"
+// // 					+ "<td>" + movieInfo.movieCd + "</td>"
+// 					+ "</tr>"
+// 				);
+			},
+			error: function() { // 요청 실패 시
+				$("#resultArea").html("<h1>요청 실패!</h1>");
+			}
+		});
+		
+	});
+	
+</script>
+</head>
+<body>
+	<h1>test6_json_movie_detail.jsp - 영화 상세정보 조회</h1>
+	<div id="resultArea">
+		<table border="1">
+			<tr>
+				<th width="150">영화명</th>
+				<td id="movieNm"></td>
+			</tr>
+			<tr>
+				<th width="100">개봉일</th>
+				<td id="openDt"></td>
+			</tr>
+			<tr>
+				<th width="70">상영시간</th>
+				<td id="showTm"></td>
+			</tr>
+			<tr>
+				<th width="300">감독</th>
+				<td id="audiAcc"></td>
+			</tr>
+			<tr>
+				<th width="300">출연진</th>
+				<td id="movieCd"></td>
+			</tr>
+		</table>
+	</div>
+	<input type="button" value="뒤로가기" onclick="history.back()">
+</body>
+</html>
+
+
+
+
+
+
+
+
+

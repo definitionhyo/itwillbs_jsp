@@ -1,0 +1,74 @@
+package db;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
+
+import org.apache.tomcat.dbcp.dbcp2.BasicDataSource;
+
+public class JdbcUtil {
+	public static Connection getConnection() {
+		Connection con = null;
+		
+		try {
+			Context initialCtx = new InitialContext();
+//		Context envCtx = (Context) initialCtx.lookup("java:comp/env");
+//		DataSource ds = (DataSource) envCtx.lookup("jdbc/MySQL");
+//		2번 3번 합치기
+			DataSource ds = (DataSource) initialCtx.lookup("java:comp/env/jdbc/MySQL");
+			//context.xml 에서 가져오는작업 끝
+			con = ds.getConnection();
+//			con.setAutoCommit(false); //false = 오토커밋끔
+
+			BasicDataSource bds = (BasicDataSource) ds;
+			System.out.println("MaxTotal : " + bds.getMaxTotal());
+			System.out.println("Active : " + bds.getNumActive());
+			System.out.println("Idle : " + bds.getNumIdle());
+		} catch (NamingException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			System.out.println("DB연결실패");
+			e.printStackTrace();
+		}
+		
+		return con;
+		
+	}
+	
+	public static void close(Connection con) {
+		try {
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void close(PreparedStatement pstmt) {
+		try {
+			pstmt.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public static void close(ResultSet rs) {
+		try {
+			rs.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+}
+
+
+
+

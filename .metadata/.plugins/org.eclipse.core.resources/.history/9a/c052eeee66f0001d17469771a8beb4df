@@ -1,0 +1,98 @@
+package action;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import svc.BoardDeleteProService;
+import svc.BoardDetailService;
+import vo.ActionForward;
+import vo.BoardBean;
+
+public class BoardDeleteProAction implements Action {
+
+	@Override
+	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
+		System.out.println("BoardDeleteProAction");
+
+		ActionForward forward = null;
+
+		int board_num = Integer.parseInt(request.getParameter("board_num"));
+		String board_pass = request.getParameter("board_pass");
+		BoardDeleteProService service = new BoardDeleteProService();
+		boolean isBoardWriter = service.isBoardWriter(board_num, board_pass);
+
+		if (!isBoardWriter) {
+			try {
+				response.setContentType("text/html; charset=UTF-8");
+				PrintWriter out = response.getWriter();
+				out.print("<script>");
+				out.print("alert('삭제 권한이 없습니다!');");
+				out.print("history.back();");
+				out.print("</script>");
+				out.flush();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		} else {
+//			파일 삭제를 위한 실제 업로드 파일명 조회
+//			=>BoardDeleteProService = getBoardRealfFile()
+//			주의! : 레코드 삭제 전 조회 작업 먼저 수행 필수
+//			파라미터 : 글번호    리턴타입 : String(board_real_file) = >실제파일
+			String board_real_file = service.getBoardRealFile(board_num);
+
+			int deleteCount = service.removeBoard(board_num);
+
+			if (deleteCount > 0) {
+				try {
+					// 삭제 성공시 실제 업로드된 파일삭제
+					// 1.가상업로드 디렉토리 지정
+					String uploadPath = "upload";
+					// 2. 실제 톰캣 상의 업로드 디렉토리
+					String realPath = request.getServletContext().getRealPath(uploadPath);
+					// 3. java.nio.file.Paths 클래스의 get() 호출하여 파일경로 관리하는 객체 생성(파라미터 : 경로명/파일명)
+					// Path path = Paths.get(realPath + "/" + 파일명(가져와야함 DB에서));
+					Path path = Paths.get(realPath + "/" + board_real_file);
+					// 4. java.nio.file.Files 클래스의 deleteIfExists() 호출
+					// 실제파일삭제작업 수행 (파라미터 : Path 객체)
+					Files.deleteIfExists(path);
+				} catch (IOException e) {
+					System.out.println("삭제할 파일이 존재하지 않습니다");
+				}
+
+				forward = new ActionForward();
+				forward.setPath("BoardList.bo?pageNum=" + request.getParameter("pageNum"));
+				forward.setRedirect(true);
+			} else {
+				try {
+					response.setContentType("text/html; charset=UTF-8");
+					PrintWriter out = response.getWriter();
+					out.print("<script>");
+					out.print("alert('삭제 실패!');");
+					out.print("history.back();");
+					out.print("</script>");
+					out.flush();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+
+		return forward;
+	}
+
+}
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,38 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<%
+	// 세션 아이디가 "admin" 이 아닐 경우 자바스크립트를 사용하여
+	// "잘못된 접근입니다" 출력 후 메인페이지로 리다이렉트
+	// 단, "admin" 판별 전 null 값 판별이 먼저 수행되어야 한다!
+	// => 즉, 세션 아이디가 null 이거나 "admin" 이 아닐 경우로 수정
+	if(!session.getAttribute("sId").equals("admin")) {
+		%>
+		<script type="text/javascript">
+			alert("잘못된 접근입니다!");
+			location.href = "sessionTest3_main.jsp";
+		</script>
+		<%
+	}
+	%>
+	<h1>관리자 페이지</h1>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

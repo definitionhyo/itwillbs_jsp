@@ -1,0 +1,24 @@
+package jsp10_jdbc_dao;
+
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/jsp10_jdbc_dao/BoardWritePro")
+public class BoardWriteProServlet extends HttpServlet {
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//		System.out.println("BoardWriteProServlet");
+		
+		// board_write_form.jsp 페이지로부터 전달받은 폼파라미터 데이터를 가져와서
+		// BoardDTO 클래스 인스턴스 생성 및 데이터 저장
+		
+		
+		
+		
+	}
+
+}

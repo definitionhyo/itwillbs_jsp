@@ -1,0 +1,52 @@
+package jsp10_jdbc_dao;
+
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/jsp10_jdbc_dao/DbcpSelect")
+public class DbcpSelectServlet extends HttpServlet {
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("DbcpSelectServlet");
+		
+		// 학생 목록 조회 요청을 위한 StudentDAO - selectStudentList() 메서드 호출
+		// => 파라미터 : 없음   리턴타입 : StudentDTO(student)
+		StudentDAO dao = new StudentDAO();
+		StudentDTO student = dao.selectStudentList();
+		System.out.println(student); // toString() 생략됨
+		
+		// 다음 페이지로 포워딩(Dispatch) 시 데이터를 함께 전송하려면
+		// request 객체의 setAttribute() 메서드를 호출하여 전송할 데이터를 저장해야한다!
+		
+		// 학생 목록 정보를 표시할 select.jsp 페이지로 포워딩
+		// => Dispatch 방식으로 포워딩
+		RequestDispatcher dispatcher = request.getRequestDispatcher("select.jsp");
+		dispatcher.forward(request, response);
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

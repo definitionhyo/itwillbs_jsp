@@ -1,0 +1,30 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<!-- HTML 주석입니다. 이 주석은 웹브라우저 소스보기를 통해 확인 가능합니다. -->
+	<h1>test2.jsp</h1>
+	<%--
+	JSP 주석입니다. 이 주석은 웹브라우저 소스보기를 통해 확인이 불가능합니다.
+	또한, JSP 코드가 포함될 경우 HTML 주석으로는 주석 처리가 불가능하므로
+	반드시 JSP 주석을 사용하여 주석 처리를 해야한다!
+	--%>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

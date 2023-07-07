@@ -1,0 +1,35 @@
+package jsp08_jdbc;
+
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/jsp08_jdbc/JdbcConnect3_INSERT")
+public class JdbcConnect3InsertServlet extends HttpServlet {
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("JdbcConnect3InsertServlet");
+		
+		
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+

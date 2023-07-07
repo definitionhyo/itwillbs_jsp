@@ -1,0 +1,11 @@
+package svc;
+
+public class BoardModifyProService {
+
+	public void modifyBoard() {
+		
+		
+		
+	}
+
+}

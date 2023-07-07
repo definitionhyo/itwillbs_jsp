@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	/*
+	[ window 객체의 하위 객체 - document ]
+	- 웹브라우저의 방문 기록을 관리하는 객체
+	- 웹브라우저를 통해 접속했던 페이지 주소(URL) 정보를 저장하고 관리
+	- 자료구조의 Stack 구조를 사용하여 페이지 정보를 관리
+	- 속성 : length 등
+	- 메서드 : back(), forward(), go() 등
+	*/
+	function func1() {
+		
+	}
+	
+	function func2() {
+		
+	}
+	
+	function func3() {
+		
+	}
+	
+	function func4() {
+		
+	}
+
+</script>
+</head>
+<body>
+	<h1>test7.html - document</h1>
+	<input type="button" value="문서 제목 출력" onclick="func1()"><br>
+	<input type="button" value="문서 제목 변경" onclick="func2()"><br>
+	<input type="button" value="문서 배경색 출력" onclick="func3()"><br>
+	<input type="button" value="문서 배경색 변경" onclick="func4()"><br>
+</body>
+</html>

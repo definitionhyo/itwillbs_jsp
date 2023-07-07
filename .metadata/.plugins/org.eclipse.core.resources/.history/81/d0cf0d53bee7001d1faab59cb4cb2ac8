@@ -1,0 +1,43 @@
+package dao;
+
+public class MemberDAO {
+	private MemberDAO( ) {}
+	private MemberDAO instance = new MemberDAO();
+	
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

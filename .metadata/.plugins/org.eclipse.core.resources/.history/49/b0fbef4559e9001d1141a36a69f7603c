@@ -1,0 +1,127 @@
+package dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import db.JdbcUtil;
+import vo.MemberBean;
+
+public class MemberDAO {
+	private MemberDAO() {
+	}
+
+	private static MemberDAO instance = new MemberDAO();
+
+	public static MemberDAO getInstance() {
+		return instance;
+	}
+
+	private Connection con;
+
+	public void setConnection(Connection con) {
+		this.con = con;
+	}
+
+	public int insertMember(MemberBean member) {
+		System.out.println("MemberDAO - insertMember()");
+
+		int insertCount = 0;
+
+		PreparedStatement pstmt = null;
+
+		try {
+			String sql = "INSERT INTO member VALUES (null,?,?,?,?,?,?,?,?,?,now())";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, member.getName());
+			pstmt.setString(2, member.getId());
+			pstmt.setString(3, member.getPasswd());
+			pstmt.setString(4, member.getJumin());
+			pstmt.setString(5, member.getEmail());
+			pstmt.setString(6, member.getJob());
+			pstmt.setString(7, member.getGender());
+			pstmt.setString(8, member.getHobby());
+			pstmt.setString(9, member.getMotivation());
+
+			System.out.println(pstmt);
+
+			insertCount = pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			System.out.println("INSERT 구문 오류 발생! - insertMember()");
+			e.printStackTrace();
+		} finally {
+			JdbcUtil.close(pstmt);
+		}
+
+		return insertCount; // => MemberJoinProService 로 리턴
+	}
+
+	public boolean selectCorrectUser(MemberBean member) {
+		boolean isCorrectUser = false;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		String sql = "select * from member where id = ? AND passwd = ?";
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, member.getId());
+			pstmt.setString(2, member.getPasswd());
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				isCorrectUser = true;
+			}
+		} catch (SQLException e) {
+			System.out.println("SQL 구문 오류 - selectCorrectUser()");
+			e.printStackTrace();
+		} finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+		}
+
+		return isCorrectUser;
+	}
+
+	// 회원 정보 조회 작업 - select
+	public MemberBean selectMember(String id) {
+		MemberBean member = null;
+
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		String sql = "select * from member where id = ?";
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				member = new MemberBean();
+				member.setIdx(rs.getInt("idx"));
+				member.setName(rs.getString("name"));
+				member.setId(rs.getString("id"));
+//				member.setPasswd(sql);
+				member.setJumin(rs.getString("jumin"));
+				member.setEmail(rs.getString("email"));
+				member.setJob(rs.getString("job"));
+				member.setGender(rs.getString("gender"));
+				member.setHobby(rs.getString("hobby"));
+				member.setMotivation(rs.getString("motivation"));
+				member.setHire_date(rs.getDate("hire_date"));
+//				System.out.println(member);
+			}
+		} catch (SQLException e) {
+			System.out.println("SQL 구문 오류 - selectMember()");
+			e.printStackTrace();
+		} finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+		}
+
+		return member;
+	}
+
+}

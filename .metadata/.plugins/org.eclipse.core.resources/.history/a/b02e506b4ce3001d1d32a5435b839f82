@@ -1,0 +1,98 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	function checkName(name) {
+		let regex = /^[가-힣]{2,5}$;
+		if(regex.exec(name)) {
+			document.querySelector("#checkNameResult").innerHTML = "사용 가능";
+			document.querySelector("#checkNameResult").style.color = "green";
+		} else { 
+			document.querySelector("#checkNameResult").innerHTML = "사용 불가능";
+			document.querySelector("#checkNameResult").style.color = "red";
+		}
+	}
+
+	function checkPhone(phone) {
+		let regex = /^(010|011|02|051)-[\d]{3,4}-[0-9]{4}$/;
+		
+		if(regex.exec(phone)) { 
+			document.querySelector("#checkPhoneResult").innerHTML = "사용 가능";
+			document.querySelector("#checkPhoneResult").style.color = "green";
+		} else { 
+			document.querySelector("#checkPhoneResult").innerHTML = "사용 불가능";
+			document.querySelector("#checkPhoneResult").style.color = "red";
+		}
+	}
+	
+	function checkIntro(intro) {
+		let regex = /볼드모트/;
+		
+		if(!regex.exec(intro)) {
+			document.querySelector("#checkIntroResult").innerHTML = intro + "\n검사 통과";
+			document.querySelector("#checkIntroResult").style.color = "green";
+		} else {
+			document.querySelector("#checkIntroResult").innerHTML = intro + "\n언급 불가!";
+			document.querySelector("#checkIntroResult").style.color = "red";
+		}
+	}
+	
+</script>
+
+
+
+
+</head>
+<body>
+	<h1>test1.jsp - 정규표현식</h1>
+	<form action="#">
+		<%-- 이름 항목에 변화가 있을 경우 checkName() 함수 호출(파라미터로 입력값 전달) --%>
+		이름 <input type="text" name="name" id="name" placeholder="한글2~5글자"
+				onchange="checkName(this.value)">
+		<span id="checkNameResult"></span><br>
+		
+		전화번호 
+		<input type="text" name="phone" id="phone" placeholder="000-0000-0000 형식"
+				onchange="checkPhone(this.value)">
+		<span id="checkPhoneResult"></span><br>
+		
+		자기소개 <textarea rows="5" cols="20" id="intro" onchange="checkIntro(this.value)"></textarea>
+		<div id="checkIntroResult"></div><br>
+	</form>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

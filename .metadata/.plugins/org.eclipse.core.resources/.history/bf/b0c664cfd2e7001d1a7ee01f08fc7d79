@@ -1,0 +1,39 @@
+package action;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import vo.ActionForward;
+import vo.MemberBean;
+
+public class MemberLoginProAction implements Action {
+
+	@Override
+	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
+		System.out.println("MemberLoginProAction");
+		
+		ActionForward forward = null;
+		
+		MemberBean member = new MemberBean();
+		member.setId(request.getParameter("id"));
+		member.setPasswd(request.getParameter("passwd"));  // 그림 action 클래스까지옴
+//		System.out.println(member);
+		
+		MemberService service = new MemberService();
+		service.isCorrectUser();
+		
+
+		
+		
+		return forward; // MemberFrontController
+	}
+
+}
+
+
+
+
+
+
+
+

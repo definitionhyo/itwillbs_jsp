@@ -1,0 +1,64 @@
+package dao;
+
+import java.sql.Connection;
+
+import vo.MemberBean;
+
+public class MemberDAO {
+	private MemberDAO( ) {}
+	
+	private static MemberDAO instance = new MemberDAO();
+	
+	public static MemberDAO getInstance() {
+		return instance;
+	}
+	
+	private Connection con;
+
+	public void setConnection(Connection con) {
+		this.con = con;
+	}
+
+	public int insertMember(MemberBean member) {
+		return 0;
+	}
+	
+	
+	
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

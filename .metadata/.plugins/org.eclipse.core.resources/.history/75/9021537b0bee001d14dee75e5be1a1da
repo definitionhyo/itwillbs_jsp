@@ -1,0 +1,25 @@
+package vo;
+
+//페이징 처리에 사용되는 정보를 저장 (DTO역할)
+public class PageInfo {
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

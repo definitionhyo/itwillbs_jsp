@@ -1,0 +1,46 @@
+package jsp08_jdbc;
+
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/jsp08_jdbc/JdbcConnect3_INSERT")
+public class JdbcConnect3InsertServlet extends HttpServlet {
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("JdbcConnect3InsertServlet");
+		
+		// 0단계. 필요한 문자열 선언
+		String driver = "com.mysql.cj.jdbc.Driver";
+		String url = "jdbc:mysql://localhost:3306/study_jsp5";
+		String user = "root";
+		String password = "1234";
+		
+		// 1단계. 드라이버 로드
+		Class.forName(driver);
+		System.out.println("드라이버 로드 성공!");
+		
+		// 번호(idx)와 이름(name)을 임의의 값으로 지정하여 jsp08_student 테이블에 INSERT
+		
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+

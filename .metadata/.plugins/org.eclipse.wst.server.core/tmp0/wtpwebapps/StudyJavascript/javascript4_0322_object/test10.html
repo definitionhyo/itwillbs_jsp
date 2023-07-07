@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	/*
+	[ innerText vs innerHTML ]
+	- 둘 다 대상 요소(객체)의 내용을 확인하거나 변경하는 용도로 사용
+	- innerText 는 대상 요소의 내용 중 텍스트만 취급하지만
+	  innerHTML 은 대상 요소의 내용을 HTML 태그까지 모두 취급
+	- 주의! innerHTML 에서 HTML 은 대문자로 표기!
+	  
+	< 기본 문법 >
+	1. 확인 : document.getElementXXX().innerText 또는 document.getElementXXX.innerHTML
+	   => 또는 document.queryXXX() 으로 대체 가능
+	2. 변경 : innerText = 내용 또는 innerHTML = 내용
+	*/
+	function funcInnerText() {
+		// id 선택자가 "divInnerText" 인 요소 객체 가져오기
+		let divInnerText = document.querySelector("#divInnerText");
+// 		alert(divInnerText); // [object HTMLDivElement]
+// 		alert(divInnerText.innerText); // 요소 내의 텍스트 요소만 출력
+
+		// innerText 속성을 활용하여 해당 div 태그 내의 텍스트 내용 변경
+		divInnerText.innerText = "<h3>innerText 로 변경한 텍스트</h3>";
+	}
+	   
+	function funcInnerHtml() {
+		// id 선택자가 "divInnerHtml" 인 요소 객체 가져오기
+		let divInnerHtml = document.querySelector("#divInnerHtml");
+// 		alert(divInnerHtml); // [object HTMLDivElement]
+// 		alert(divInnerHtml.innerHTML); // 요소 내의 모든 요소(주석 포함)를 출력
+		
+		// innerHTML 속성을 활용하여 해당 div 태그 내의 텍스트 내용 변경
+		divInnerHtml.innerHTML = "<h3>innerHTML 로 변경한 텍스트</h3>";
+	}
+	
+	function showDate() {
+		let now = new Date(); // 현재 날짜 및 시각 정보 가져오기
+// 		document.querySelector("#divDate").innerText = now;
+		document.querySelector("#divDate").innerHTML = "<h3>" + now + "</h3>";
+	}
+</script>
+</head>
+<body>
+	<h1>test10.html</h1>
+	<input type="button" value="innerText" onclick="funcInnerText()">
+	<button onclick="funcInnerHtml()">innerHTML</button>
+	<div id="divInnerText">
+		<!-- innerText 로 내용 변경할 위치 -->
+		<h1>기본으로 표시할 텍스트</h1>
+	</div>
+	<div id="divInnerHtml">
+		<!-- innerHTML 로 내용 변경할 위치 -->
+		<h1>기본으로 표시할 텍스트</h1>
+	</div>
+	<hr>
+	<button onclick="showDate()">날짜 및 시각 표시</button>
+	<div id="divDate"><!-- 날짜 및 시각 표시 위치 --></div>
+	
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

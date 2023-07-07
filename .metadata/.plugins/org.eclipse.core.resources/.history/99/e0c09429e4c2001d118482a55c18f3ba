@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>test4_new_window.html</h1>
+	<input type="button" value="현재(자식)창 메세지 출력" onclick="showMessage()"><br>
+	<input type="button" value="부모창 메세지 출력" onclick="showMessage2()"><br>
+	<input type="button" value="현재(자식)창 닫기" onclick="closeWindow()"><br>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	function func1() {
+// 		let infoArea = document.querySelector("#infoArea");
+// 		infoArea.innertext = "<h3>가나다라</h3>";
+// 		document.querySelector("#infoArea").innerHTML = "확인";
+		
+		//2번방식   documnet.name속성명.속성명
+// 		document.querySelector("#infoArea").innerHTML = //이건 텍스트써주는거 
+// 			"src = " + document.img1.src + "<br>" + 
+// 			"width = " + document.img1.width + "<br>" + 
+// 			"height = " + document.img1.height;
+		
+		//3번방식
+		//document.images[인덱스].속성명		
+// 		document.querySelector("#infoArea").innerHTML = //이건 텍스트써주는거 
+// 			"src = " + document.images[0].src + "<br>" + 
+// 			"width = " + document.images[0].width + "<br>" + 
+// 			"height = " + document.images[0].height;
+		//만약 반복문
+		
+		let info = "";
+		for(let i = 0; i < document.images.length; i++) {
+			for(let j = 0; j < document.images[i].length; j++) {
+				
+			}
+		}
+		
+		
+		
+	}
+	
+	function func2() {
+		
+	}
+	
+</script>
+
+
+</head>
+<body>
+	<h1>test13.html</h1>
+	<img src="1.jpg" name="img1" width="150" height="150" title="펭수1" alt="펭수없음">
+	<img src="2.jpg" name="img2" width="150" height="150" title="펭수2" alt="펭수2없음">
+	<br>
+	<button onclick="func1()">이미지 속성 정보 출력</button>
+	<input type="button" value="이미지 속성정보 변경" onclick="func2()">
+	<div id="infoArea"></div>
+	
+</body>
+</html>

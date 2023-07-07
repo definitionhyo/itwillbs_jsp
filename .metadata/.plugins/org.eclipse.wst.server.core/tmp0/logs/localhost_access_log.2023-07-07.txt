@@ -1,0 +1,4 @@
+127.0.0.1 - - [07/Jul/2023:09:03:17 +0900] "GET / HTTP/1.1" 404 807
+0:0:0:0:0:0:0:1 - - [07/Jul/2023:09:03:18 +0900] "GET /StudyJavascript/javascript5_0705_ajax_json/test5_json_movie_list.jsp HTTP/1.1" 200 8828
+0:0:0:0:0:0:0:1 - - [07/Jul/2023:09:03:18 +0900] "GET /favicon.ico HTTP/1.1" 404 818
+0:0:0:0:0:0:0:1 - - [07/Jul/2023:09:08:04 +0900] "GET /StudyJavascript/javascript5_0705_ajax_json/test5_json_movie_list.jsp HTTP/1.1" 200 8910

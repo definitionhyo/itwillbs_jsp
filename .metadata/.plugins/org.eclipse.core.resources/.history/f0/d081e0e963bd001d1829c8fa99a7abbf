@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	
+</script>
+</head>
+<body>
+	<h1>HTML 태그와 자바스크립트 함수 연결(기초)</h1>
+	<!-- 
+	HTML 태그 요소에 onxxx 속성을 사용하면 xxx 기능이 동작할 때 
+	지정된 자바스크립트 코드가 실행됨
+	ex) onclick 속성은 해당 요소를 "클릭" 하면 동작
+	=> onclick="자바스크립트코드" 형식으로 지정 시 "클릭"하면 해당 코드가 실행됨
+	=> 세미콜론(;) 제외
+	-->
+	<!-- 함수호출 버튼 "클릭" 시 "함수 호출됨!" 메세지를 출력하는 alert() 함수가 실행됨 -->
+	<input type="button" value="함수호출" onclick="alert('함수 호출됨!')">
+	
+	
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

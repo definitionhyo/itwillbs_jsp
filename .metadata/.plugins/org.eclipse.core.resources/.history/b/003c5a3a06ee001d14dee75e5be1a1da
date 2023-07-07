@@ -1,0 +1,70 @@
+package svc;
+
+import java.sql.Connection;
+import java.util.List;
+
+import dao.BoardDAO;
+import db.JdbcUtil;
+import vo.BoardBean;
+
+public class BoardListService {
+
+	public List<BoardBean> getBoardList(int startRow, int listLimit) {
+		System.out.println("BoardListService");
+		
+		List<BoardBean> boardList = null;
+		
+		Connection con = JdbcUtil.getConnection();
+		
+		BoardDAO dao = BoardDAO.getInstance();
+		
+		dao.setConnection(con);
+		
+		boardList = dao.selectBoardList(startRow, listLimit);
+		
+		JdbcUtil.close(con);
+		
+		
+		return boardList;  // boardListAction 으로 리턴
+	}
+
+	public int getBoardListCount() {
+		System.out.println("getBoardListCount()");
+		
+		BoardBean boardListCount = null;
+		
+		Connection con = JdbcUtil.getConnection();
+		
+		BoardDAO dao = BoardDAO.getInstance();
+		
+		dao.setConnection(con);
+		
+		boardListCount = dao.selectBoardList(boardListCount, boardListCount).get(boardListCount);
+		
+		JdbcUtil.close(con);
+		
+		
+		return boardListCount;
+		
+	}
+
+
+	
+	
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

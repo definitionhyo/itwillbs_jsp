@@ -1,0 +1,65 @@
+package action;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import svc.MemberInfoService;
+import vo.ActionForward;
+import vo.MemberBean;
+
+public class MemberListAction implements Action {
+
+	@Override
+	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
+		System.out.println("MemberListAction");
+		
+		ActionForward forward = null;
+		
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("sId");
+//		System.out.println(id);
+		
+		//null 먼저
+		if(id == null || id.equals("admin")) {	
+			response.setContentType("text/html; charset=UTF-8");
+			try {
+				PrintWriter out = response.getWriter();
+				
+				out.print("<script>");
+				out.print("alert('잘못된 접근입니다!');");
+				out.print("history.back();");
+				out.print("</script>");
+				out.flush();
+				
+			} catch (IOException e) {
+				e.printStackTrace();
+			} 
+			} else {
+				MemberInfoService service= new MemberInfoService();
+				MemberBean member = service.getMember(id);
+				
+				forward = new ActionForward();
+				forward.setPath("member/member_info.jsp");
+				forward.setRedirect(false); //디스패치
+				
+				
+			}
+		
+		return forward;
+	}
+
+}
+
+
+
+
+
+
+
+
+
+

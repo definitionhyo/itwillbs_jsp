@@ -1,0 +1,60 @@
+<%@page import="java.util.List"%>
+<%@page import="jsp10_jdbc_dao.StudentDTO"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%
+// DbcpSelectServlet 클래스로부터 전달받은 request 객체 내에 저장되어 있는
+// StudentDTO 객체를 꺼내서 변수에 저장하기
+// => request 객체의 getAttribute() 메서드를 호출하여 속성명("student") 지정
+//    리턴타입이 Object 타입이므로 StudentDTO 타입 다운캐스팅 필수!
+// StudentDTO student = (StudentDTO)request.getAttribute("student");
+
+// 학생 목록이 저장되어 있는 List<StudentDTO> 객체 꺼내서 저장하기
+// => request 객체의 getAttribute() 메서드를 호출하여 속성명("studentList") 지정
+//    리턴타입이 Object 타입이므로 ??? 타입 다운캐스팅 필수!
+List<StudentDTO> studentList = (List<StudentDTO>)request.getAttribute("studentList");		
+%>    
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>select.jsp</h1>
+	<table border="1">
+		<tr>
+			<th>번호</th>
+			<th>이름</th>
+		</tr>
+		<%
+		// 위에서 전달받은 List<StudentDTO> 객체를 for문을 통해 반복하면서
+		// 내부에 저장되어 있는 StudentDTO 객체를 차례대로 꺼내기
+		// => 일반 for문 또는 향상된 for문 모두 사용 가능
+		// 1) 일반 for문(배열 크기 대신 List 객체의 size() 메서드로 크기 판별)
+		for(int i = 0; i < studentList.size(); i++) {
+			// 전체 레코드가 저장된 List 객체의 get() 메서드를 호출하여
+			// 각각의 StudentDTO 객체 꺼내서 변수에 저장하기
+			// => 이 때, 파라미터는 List 객체의 인덱스 번호(i)를 전달
+			StudentDTO student = studentList.get(i);
+		}
+		%>
+		
+<!-- 		<tr> -->
+<%-- 			<td><%=student.getIdx() %></td> --%>
+<%-- 			<td><%=student.getName() %></td> --%>
+<!-- 		</tr> -->
+	</table>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

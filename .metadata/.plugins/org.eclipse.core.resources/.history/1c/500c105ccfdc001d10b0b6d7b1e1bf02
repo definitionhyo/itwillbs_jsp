@@ -1,0 +1,6 @@
+package jsp10_jdbc_dao;
+
+
+public class BoardDTO {
+
+}

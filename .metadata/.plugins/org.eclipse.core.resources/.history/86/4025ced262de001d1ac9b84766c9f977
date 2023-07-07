@@ -1,0 +1,61 @@
+<%@page import="java.util.List"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>글 목록</h1>
+	<table border="1">
+		<tr>
+			<th>작성자</th>
+			<th>패스워드</th>
+			<th>제목</th>
+			<th>내용</th>
+		</tr>
+		<%
+		// BoardListServlet 객체로부터 전달받은 List 객체("boardList") 가져오기
+		// request 객체의 getAttribute() 메서드 활용(다운캐스팅 필수)
+		List<BoardDTO> boardList = (List<BoardDTO>)request.getAttribute("boardList");
+		
+		// 반복문을 사용하여 List 객체 내의 BoardDTO 객체를 차례대로 꺼내서
+		// 각 행(tr 태그) 내에 출력
+// 		for(int i = 0; i < boardList.size(); i++) {
+// 			// List 객체에서 BoardDTO 객체 꺼내서 저장
+// 			BoardDTO board = boardList.get(i);
+// 		}
+		
+		for(BoardDTO board : boardList) {
+			%>
+			<%-- <tr><td> 태그를 조합하여 BoardDTO 객체의 내용을 테이블에 출력 반복 --%>
+			<tr>
+				<td><%=board.getBoard_name() %></td>
+				<td><%=board.getBoard_pass() %></td>
+				<td><%=board.getBoard_subject() %></td>
+				<td><%=board.getBoard_content() %></td>
+			</tr>
+			<%
+		}
+		%>
+	</table>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

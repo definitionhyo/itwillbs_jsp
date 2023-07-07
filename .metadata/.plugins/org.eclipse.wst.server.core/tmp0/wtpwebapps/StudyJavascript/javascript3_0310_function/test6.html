@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	function login() {
+		// prompt() 함수 2번 연속으로 호출하여 아이디와 패스워드 입력받아 변수에 각각 저장하기
+		let id = prompt("아이디 입력");
+		let pass = prompt("패스워드 입력");
+		
+		if(id == "admin" && pass == "1234") {
+			document.write(id + ", " + pass + " : 로그인 성공!<br>");
+		} else {
+			document.write(id + ", " + pass + " : 로그인 실패!<br>");
+		}
+	}
+</script>
+</head>
+<body>
+	<!-- 로그인 버튼 생성 => 클릭 시 login() 함수 호출 -->
+	<input type="button" value="로그인" onclick="login()">
+</body>
+</html>

@@ -1,0 +1,29 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div align="right">
+		<h4>
+			<a href="sessionTest3_main.jsp">HOME</a> |
+			<a href="sessionTest3_loginForm.jsp">로그인</a> |
+			<a href="sessionTest3_joinForm.jsp">회원가입</a>
+		</h4>
+	</div>
+	<div align="center">
+		<h1>메인화면</h1>
+	</div>
+</body>
+</html>
+
+
+
+
+
+
+
+

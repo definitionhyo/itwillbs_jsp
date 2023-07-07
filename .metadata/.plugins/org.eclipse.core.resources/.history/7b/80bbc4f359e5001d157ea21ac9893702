@@ -1,0 +1,34 @@
+package vo;
+
+//CREATE TABLE member
+//(
+//	idx int PRIMARY KEY AUTO_INCREMENT,
+//	name varchar(10) NOT NULL,
+//	id varchar(16) NOT NULL UNIQUE,
+//	passwd varchar(16) NOT NULL,
+//	jumin varchar(14) NOT NULL UNIQUE,
+//	email varchar(50) NOT NULL UNIQUE,
+//	job varchar(10) NOT NULL,
+//	gender carchar(1) NOT NULL,
+//	hobby varchar(50) NOT NULL,
+//	motivation varchar(500) NOT NULL
+//);
+
+public class MemberVO {
+
+	private int idx;
+	private String name;
+	private String id;
+	private String passwd;
+	private String jumin;
+	private String email;
+	private String job;
+	private String gender;
+	private String hobby;
+	private String motivation;
+
+
+		
+		
+	
+}

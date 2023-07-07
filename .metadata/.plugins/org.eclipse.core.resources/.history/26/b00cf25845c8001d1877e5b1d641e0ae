@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	/*
+	[ 선택자(Selector) ]
+	- HTML 문서에서 특정 대상을 구분(선택)하는 용도로 사용되는 속성(이름)
+	- id, class, 태그 등을 사용
+	1) id 선택자(#) : 태그 요소를 유일하게 구분할 수 있도록 지정하는 이름
+	2) class 선택자(.) : 태그 요소를 복수개 선택할 수 있도록 중복으로 지정하는 이름
+	3) 태그 선택자 : 해당 태그를 직접 선택할 수 있도록 지정하는 이름
+	
+	[ document 객체를 사용하여 특정 선택자를 갖는 요소를 선택하는 방법 ]
+	
+	< document 객체의 getElementById() 메서드 활용 >
+	1. id 선택자 : document.getElementById("id선택자명");
+	2. class 선택자 : document.getElementsByClassName("class선택자명");
+	3. 태그 선택자 : document.getElementsByTagName("태그명");
+	=> 리턴되는 객체를 통해 해당 요소(태그)에 접근하여 다양한 작업 수행 가능
+	=> 이 때, id 선택자를 지정하면 대상 태그에 대한 단일 객체가 리턴되며
+	   class 선택자 또는 태그 선택자를 지정하면 대상 태그들에 대한 복수개의 객체가 
+	   HTMLCollection 타입 객체로 리턴되어 반복문 등을 통해 접근 가능
+	*/
+	
+	function func1() {
+		// HTML 태그 요소 중 id 선택자가 "name" 인 태그를 객체 형태로 가져오기(= 리턴받기)
+		// => document.getElementById() 메서드 사용
+		let nameElement = document.getElementById("name");
+// 		alert(nameElement); 
+		// [object HTMLInputElement] 객체 출력됨(= 객체(요소) 존재함)
+		// => 만약, 대상 요소가 존재하지 않을 경우 null 값 리턴됨
+		// => 따라서, 지정된 객체(태그 요소)에 접근하여 속성 등을 변경하는 작업 수행 가능
+		nameElement.value = "홍길동";
+		// => "name" 이라는 id 선택자를 갖는 태그에 접근하여 
+		//     value 속성값(텍스트박스에 표시되는 값)을 "홍길동" 으로 변경
+		//     => 텍스트박스에 지정된 값이 표시된다!
+		// => 이 때, 다른 태그 요소들은 영향을 받지 않는다! (id 선택자는 유일하기 때문)
+		
+		// HTML 태그 요소 중 id 선택자가 "header1" 인 태그 객체 가져오기
+		let idHeader1 = document.getElementById("header1");
+		idHeader1.style.background = "YELLOW";
+		
+		// 변수에 객체를 리턴받아 저장하는 과정을 생략하고 직접 접근도 가능
+		// id 선택자가 "header2" 인 태그에 접근하여 배경색을 "SKYBLUE" 로 변경
+		document.getElementById("header2").style.background = "SKYBLUE";
+	}
+</script>
+</head>
+<body>
+	<h1>test9.html</h1>
+	<input type="text" id="name"><br>
+	<input type="text" id="name2"><br>
+	<input type="button" value="확인" onclick="func1()">
+	<hr>
+	<h3 id="header1">Header - 1</h3>
+	<h3 id="header2">Header - 2</h3>
+	<h4 id="header3">Header - 3</h4>
+	<h4 id="header4">Header - 4</h4>
+	<hr>
+	<h3 class="header5">Header - 5_1</h3>
+	<h3 class="header5">Header - 5_2</h3>
+	
+</body>
+</html>

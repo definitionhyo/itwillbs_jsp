@@ -1,0 +1,71 @@
+package svc;
+
+import java.sql.Connection;
+
+import dao.MemberDAO;
+import db.JdbcUtil;
+import vo.MemberBean;
+
+public class MemberJoinProService {
+	
+	public boolean joinMember(MemberBean member) {
+		System.out.println("MemberJoinProService - joinMember()");
+		
+//		단계별  ( 2,3,4,7 단계는 공통 = XXXservice 만들면 똑같이사용)
+		boolean isJoinSuccess = false;
+		
+		Connection con = JdbcUtil.getConnection();  // 2단계 
+		
+		MemberDAO dao = MemberDAO.getInstance(); 	// 3단계
+		
+		dao.setConnection(con);		// 4단계
+		
+		int insertCount = dao.insertMember(member);
+		
+		
+		JdbcUtil.close(con);	// 7단계
+		
+		
+		return isJoinSuccess;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

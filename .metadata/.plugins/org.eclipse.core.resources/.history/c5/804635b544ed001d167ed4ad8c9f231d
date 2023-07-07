@@ -1,0 +1,18 @@
+package svc;
+
+import java.sql.Connection;
+
+import vo.BoardBean;
+
+
+public class BoardWriteProService {
+
+	public boolean registBoard(BoardBean board) {
+		
+		
+		return false;
+	}
+
+
+
+}

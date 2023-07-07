@@ -1,0 +1,42 @@
+package jsp08_jdbc;
+
+import java.io.IOException;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/jsp08_jdbc/JdbcConnect3_DELETE")
+public class JdbcConnect3DeleteServlet extends HttpServlet {
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("JdbcConnect3DeleteServlet");
+		
+		try {
+			// 1단계. JDBC 드라이버 로드
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			System.out.println("드라이버 로드 성공!");
+			
+			// 2단계. DB 연결
+			DriverManager.getConnection("jdbc:mysql://localhost:3306/study_jsp5", "root", "1234");
+			System.out.println("DB 연결 성공!");
+			
+			// 3단계. SQL 구문 작성 및 전달
+			// 번호가 1번인 레코드 삭제하는 DELETE 구문 작성
+			
+			
+			// 4단계. SQL 구문 실행 및 결과 처리
+		} catch (ClassNotFoundException e) {
+			System.out.println("드라이버 로드 실패!");
+			e.printStackTrace();
+		} catch (SQLException e) {
+			System.out.println("DB 연결 실패!");
+			e.printStackTrace();
+		}
+	}
+
+}

@@ -1,0 +1,30 @@
+package vo;
+
+/*
+ member 테이블 정의
+ ----------------------------------
+ 번호(idx) - 정수
+ 이름(name) - 문자(10자)
+ 비밀번호(name) - 문자(16자)
+ 주민번호(name) - 문자(14자)
+ 이메일(name) - 문자(50자)
+ 직업(name) - 문자(10자)
+ 성별(name) - 문자(1자)
+ 취미(name) - 문자(50자)
+ 가입동기(name) - 문자(500자)
+ */
+public class MemberVO {
+	private int idx;
+	private String name;
+	private String id;
+	private String passwd;
+	private String jumin;
+	private String email;
+	private String job;
+	private String gender;
+	private String hobby;
+	private String motivation;
+	
+	
+	
+}

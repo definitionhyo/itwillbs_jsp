@@ -1,0 +1,39 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>requestPro2.jsp - 로그인 처리</h1>
+	<%
+	// 폼 파라미터(아이디, 패스워드, 로그인 상태 유지) 가져와서 변수에 저장 및 출력
+	String id = request.getParameter("id");
+	String passwd = request.getParameter("passwd");
+	String rememberLogin = request.getParameter("rememberLogin");
+	
+// 	out.print("<h3>아이디 : " + id + "</h3>");
+// 	out.print("<h3>패스워드 : " + passwd + "</h3>");
+// 	out.print("<h3>로그인 상태 유지 : " + rememberLogin + "</h3>");
+	%>
+	<h3>아이디 : <%=id %></h3>
+	<h3>패스워드 : <%=passwd %></h3>
+	<h3>로그인 상태 유지 : <%=rememberLogin %></h3>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

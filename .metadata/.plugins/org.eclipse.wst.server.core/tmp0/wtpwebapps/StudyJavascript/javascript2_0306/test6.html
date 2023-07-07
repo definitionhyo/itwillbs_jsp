@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script type="text/javascript">
+	/*
+	if문
+	- 특정 조건에 따라 문장을 실행하는 조건문
+	- 자바에서의 if문과 동일
+	- 조건식은 반드시 결과가 true 또는 false 인 식만 사용 가능하며, 변수 사용도 가능
+	
+	1. 단일 if문
+	- if문에 주어진 조건을 판별하여 true 일 때 지정된 블럭 내의 문장들을 수행하는 if문
+	
+	< 기본 문법 >
+	if(조건식) {
+		// 조건식 판별 결과가 true 일 때 실행할 문장들...		
+	}
+	*/
+	
+	// 변수 num 선언 및 10 으로 초기화 후 출력하기
+	let num = -10;
+// 	document.write(num);
+	
+	// if 문을 사용하여 num 이 0 보다 큰지 판별(= 변수 num 의 값이 0 보다 큰가?)
+	if(num > 0) {
+		// 변수 num 의 값이 0 보다 클 경우(= 조건식 판별 결과가 true 일 경우) 실행할 문장들...
+		document.write(num + " : 0보다 크다!<br>");
+		document.write("그러므로, 이 문장은 웹브라우저에 표시된다!<br>");
+	} // if문 끝
+	
+	document.write("이 문장은 if문과 관계없이 무조건 웹브라우저에 표시된다!<br>");
+	
+	document.write("<hr>");
+	/*
+	===============================================================================
+	2. if ~ else 문
+	- if문에 주어진 조건 판별 후 true 일 경우 if 문 내의 문장을 수행하고,
+	  false 일 경우 else 문의 문장을 수행하는 if 문
+	  
+	< 기본 문법 >
+	if(조건식) {
+		// 조건식 판별 결과가 true 일 때 실행할 문장들...		
+	} else {
+		// 조건식 판별 결과가 false 일 때 실행할 문장들...		
+	}
+	*/
+	
+	// 변수 num2 가 0보다 클 경우와 아닐 경우 판별
+	let num2 = -10;
+	
+	if(num2 > 0) {
+		// 변수 num2 의 값이 0 보다 클 경우(= 조건식 판별 결과가 true 일 경우) 실행할 문장들...
+		document.write(num2 + " : 0보다 크다!<br>");
+		document.write("그러므로, 0보다 클 경우 이 문장은 웹브라우저에 표시된다!<br>");
+	} else {
+		// 변수 num2 의 값이 0 보다 크지 않을 경우(= 조건식 판별 결과가 false 일 경우) 실행할 문장들...
+		document.write(num2 + " : 0보다 크지 않다!<br>");
+		document.write("그러므로, 0보다 크지 않을 경우 이 문장은 웹브라우저에 표시된다!<br>");
+	} 
+	
+	document.write("이 문장은 if문과 관계없이 무조건 웹브라우저에 표시된다!<br>");
+	
+	document.write("<hr>");
+	// ------------------------------------------------------------------------
+	// 사용자로부터 숫자 1개를 입력받아 변수 inputNum 에 저장 후
+	// 3의 배수 or 3의 배수가 아님을 판별(3의 배수 = 3으로 나눈 나머지가 0인 수)
+// 	let inputNum = prompt("숫자 1개 입력");
+	
+// 	if(inputNum % 3 == 0) { // 3의 배수일 경우
+// 		document.write(inputNum + " : 3의 배수이다!<br>");
+// 	} else { // 3의 배수가 아닐 경우
+// 		document.write(inputNum + " : 3의 배수가 아니다!<br>");
+// 	}
+	
+// 	document.write("<hr>");
+	
+	// 사용자의 나이(age)를 입력받아 변수 age 에 저장 후
+	// 입력받은 나이에 대한 정상 여부 판별(0 이상일 경우 "정상", 아니면 "잘못된 입력" 출력)
+// 	let age = prompt("나이를 입력하세요");
+	
+// 	if(age >= 0) { // 정상적인 입력 데이터
+// // 		document.write("정상!");
+		
+// 		// 중첩 if문을 사용하여 나이가 0 이상(= 정상)일 때 추가적인 판별 작업 수행
+// 		// => 나이가 20세 이상일 경우 "성인입니다!" 출력, 아니면 "미성년자!" 출력
+// 		if(age >= 20) {
+// 			document.write(age + " : 성인입니다!");
+// 		} else {
+// 			document.write(age + " : 미성년자입니다!");
+// 		}
+// 	} else { // 비정상적인 입력 데이터
+// 		document.write(age + " : 잘못된 입력!");
+// 	}
+	
+// 	document.write("<hr>");
+	
+	/*
+	======================================================================================
+	3. if ~ else if 문(= 다중 else if 문)
+	- if문에 주어진 조건을 판별하여 true 일 경우 if 문의 블럭 내의 문장들을 수행하고,
+	  false 일 경우 다음 if 문의 조건을 판별 후 true 이면 else if 내의 문장들을 수행,
+	  아니면 다음 if 문 조건을 계속 판별함
+	  => 만약, 모든 조건식의 판별 결과가 false 이면 else 문이 있을 경우 해당 블럭 문장 수행
+	     (단, else 문은 생략 가능함)
+	- 주의! if문은 위에서부터 순서대로 조건을 판별하므로
+	  else 문은 항상 가장 마지막 조건으로 기술해야한다!
+
+	< 기본 문법 >
+	if(조건식1) {
+		// 조건식1 판별 결과가 true 일 때 실행할 문장들...		
+	} else if(조건식2) {
+		// 조건식1 판별 결과가 false 이고, 조건식2 판별 결과가 true 일 때 실행할 문장들...
+	} else if(조건식n) {
+		// 조건식1, 2 판별 결과가 false 이고, 조건식n 판별 결과가 true 일 때 실행할 문장들...
+	} else {
+		// 위의 모든 조건식 판별 결과가 false 일 때 실행할 문장들... (else 문은 생략 가능)
+	}
+	*/
+	
+	// 변수 num3 선언 및 0 으로 초기화
+	let num3;
+	
+	// 변수 num3 에 대해 "0보다 크다!", "0보다 작다!", "0이다!" 의 세 가지 경우의 수 판별
+	if(num3 > 0) {
+		document.write(num3 + " : 0보다 크다!");
+	} else if(num3 < 0) {
+		document.write(num3 + " : 0보다 작다!");
+	} else {
+		// num3 가 0보다 크지 않고, 0보다 작지도 않을 경우(= 0과 같을 경우) 실행할 문장
+		// 이 때, else 대신 else if(num3 == 0) 문장도 사용 가능함
+		// => 단, 만약, num3 가 null 이나 undefined 등 숫자가 아닌 값일 경우
+		//    else 문에 모두 포함될 수 있으므로 상황에 맞게 else 또는 else if 사용해야한다!
+		document.write(num3 + " : 0이다!");
+	}
+	
+	document.write("<hr>");
+	
+	// 변수 age2 에 나이를 저장하고 나이 판별
+	// => 10대 or 20대 or 30대 or 나머지
+	// => 10대? 나이(age2)가 10 이상 [이고], 나이(age2)가 19 이하
+	let age2 = 41;
+	
+	if(age2 >= 10 && age2 <= 19) {
+		document.write(age2 + " : 10대입니다!");
+	} else if(age2 >= 20 && age2 <= 29) {
+		document.write(age2 + " : 20대입니다!");
+	} else if(age2 >= 30 && age2 <= 39) {
+		document.write(age2 + " : 30대입니다!");
+	} else {
+		document.write(age2 + " : 나머지!");
+	}
+	
+	document.write("<hr>");
+	
+	// 특이사항. 자바스크립트에서 boolean 타입이 아닌 데이터를 if문 조건식에 사용 가능
+	// => 조건식에 지정된 값이 있으면 true, 없으면 false 로 취급됨(값 자체의 존재 여부 판별)
+// 	let data = "Hello"; // 문자열이 있으므로 true
+// 	let data = ""; // 문자열이긴 하나 널스트링은 문자열 내용이 없으므로 false
+// 	let data; // 값이 없는 undefined 이므로 false
+// 	let data = null; // null 도 false 로 취급
+	let data = 3.14; // 실수 데이터가 있으므로 true
+	
+	if(data) {
+		document.write(data + " : true");
+	} else {
+		document.write(data + " : false");
+	}
+	
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

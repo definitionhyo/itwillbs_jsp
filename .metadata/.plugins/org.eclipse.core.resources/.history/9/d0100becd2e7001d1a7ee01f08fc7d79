@@ -1,0 +1,12 @@
+package svc;
+
+import vo.MemberBean;
+
+public class MemberLoginProService {
+
+	public boolean isCorrectUser(MemberBean member) {
+		return false;
+	}
+
+
+}

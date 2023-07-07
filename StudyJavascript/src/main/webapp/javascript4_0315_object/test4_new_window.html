@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	function showMessage() {
+		alert("자식창 메세지 출력");
+	}
+	
+	function showMessage2() {
+		// 자식창에서 부모창을 제어하려면 window.opener 로 접근해야한다!
+		// 자식창에서 부모창에 alert() 함수를 통해 알림창 표시하기
+		window.opener.alert("자식창에서 요청한 메세지를 부모창에서 출력");
+	}
+	
+	function closeWindow() {
+		window.close(); // 현재 자신의 창 닫기
+	}
+	
+	function closeWindow2() {
+		window.opener.close(); // 현재 자신의 부모 창 닫기
+	}
+</script>
+</head>
+<body>
+	<h1>test4_new_window.html</h1>
+	<input type="button" value="현재(자식)창 메세지 출력" onclick="showMessage()"><br>
+	<input type="button" value="부모창 메세지 출력" onclick="showMessage2()"><br>
+	<input type="button" value="현재(자식)창 닫기" onclick="closeWindow()"><br>
+	<input type="button" value="현재(부모)창 닫기" onclick="closeWindow2()"><br>
+</body>
+</html>
+
+
+
+
+
+
+
+

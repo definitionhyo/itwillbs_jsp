@@ -1,0 +1,83 @@
+package action;
+
+import java.io.IOException;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+
+import vo.ActionForward;
+
+public class BoardWriteProAction implements Action {
+
+	@Override
+	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
+		System.out.println("BoardWriteProAction");
+		
+		ActionForward forward = null;
+		
+//		ip 주소를 알아내야되는경우
+		try {
+			String writerAddr = request.getRemoteAddr(); 
+			System.out.println("작성자 IP : " + writerAddr);
+			
+			String uploadPath = "upload";
+			String realPath = request.getServletContext().getRealPath(uploadPath);
+			System.out.println("실제 업로드 경로 : " + realPath);
+//		C:\Users\ user\Documents\workspace_jsp5\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\MVC_Board\ upload
+			
+			int fileSize = 1024 * 1024 * 10;
+			
+			MultipartRequest multi = new MultipartRequest(request, realPath, fileSize, "UTF-8", new DefaultFileRenamePolicy());
+			
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		
+		
+		return forward;
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

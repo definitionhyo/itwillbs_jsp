@@ -1,0 +1,15 @@
+package svc;
+
+import java.util.List;
+
+import vo.MemberBean;
+
+public class MemberListService {
+
+	public List<MemberBean> getMemberList() {
+		
+		return null;
+	}
+
+	
+}

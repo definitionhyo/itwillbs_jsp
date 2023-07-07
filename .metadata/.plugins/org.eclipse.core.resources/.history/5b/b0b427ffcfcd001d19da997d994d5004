@@ -1,0 +1,58 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>requestForm1.jsp - request 객체</h1>
+	<%--
+	[ form 태그 ]
+	1) action 속성
+	   - submit 동작 시 폼 태그 내의 파라미터(= 폼 파라미터)를 모두 request 객체에 저장한 후
+	     action 속성에 저장된 페이지(또는 파일)로 포워딩(이동) 작업 수행
+	     => 이 때, 이동 시 request 객체도 함께 전송
+	2) method 속성
+	   - GET 방식(method="get" => 기본값)
+	   - POST 방식(method="post")
+	--%>
+<!-- 	<form action="requestPro1.jsp" method="get"></form> -->
+	<form action="requestPro1.jsp" method="get">
+		<table border="1">
+			<tr>
+				<th>이름</th>
+				<td><input type="text" name="name"></td>
+			</tr>
+			<tr>
+				<th>나이</th>
+				<td><input type="text" name="age"></td>
+			</tr>
+			<tr>
+				<th>성별</th>
+				<td>
+					<input type="radio" name="gender" value="male">남
+					<input type="radio" name="gender" value="female">여
+				</td>
+			</tr>
+			<tr>
+				<th>취미</th>
+				<td><input type="text" name="name"></td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

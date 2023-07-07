@@ -1,0 +1,95 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h3 align="center">include 템플릿 페이지</h3>
+	<table border="1">
+		<tr>
+			<td colspan="2" width="800" height="100">
+				<div align="right">
+					<%
+					// 세션에 저장된 "sId" 라는 속성값을 가져와서 String 타입 변수 id 에 저장
+					String id = (String)session.getAttribute("sId");
+					%> 
+					<h4>
+						<a href="sessionTest3_main.jsp">HOME</a> |
+						<%if(id == null) { // 로그인 하지 않았을 경우 %>
+							<a href="sessionTest3_loginForm.jsp">로그인</a> |
+							<a href="sessionTest3_joinForm.jsp">회원가입</a>
+						<%} else { // 로그인 했을 경우 %>
+							<a href=""><%=id %> 님</a> |
+							<a href="javascript:confirmLogout()">로그아웃</a>
+							<%if(id.equals("admin")) { %>
+								| <a href="sessionTest3_admin.jsp">관리자페이지</a>
+							<%} %>
+						<%} %>
+					</h4>
+				</div>
+				<div align="center">
+					<a href="#">상단메뉴1</a>&nbsp;&nbsp;&nbsp;
+					<a href="#">상단메뉴2</a>&nbsp;&nbsp;&nbsp;
+					<a href="#">상단메뉴3</a>&nbsp;&nbsp;&nbsp;
+					<a href="#">상단메뉴4</a>&nbsp;&nbsp;&nbsp;
+					<a href="#">상단메뉴5</a>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td width="200" height="400">
+				<h3>브랜드 패션</h3>
+				<h3>의류,잡화,뷰티</h3>
+				<h3>디지털</h3>
+				<h3>식품</h3>
+			</td>
+			<td>
+				<h4>메인화면</h4>
+				<table border="1">
+					<tr>
+						<td>
+							
+						</td>
+						<td>
+						
+						</td>
+						<td>
+						
+						</td>
+					</tr>
+					<tr>
+						<td>상품1</td>
+						<td>상품2</td>
+						<td>상품3</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<div align="center">
+					<h4>
+						아이티윌 부산교육센터<br>
+						주소 : 부산광역시 부산진구<br>
+						전화번호 : 051-803-0909
+					</h4>
+				</div>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

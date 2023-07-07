@@ -1,0 +1,62 @@
+package action;
+
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import svc.BoardListService;
+import vo.ActionForward;
+import vo.BoardBean;
+
+public class BoardListAction implements Action {
+
+	@Override
+	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
+		System.out.println("BoardListAction");
+		
+		ActionForward forward = null;
+		
+		BoardListService service = new BoardListService();
+		List<BoardBean> boardList = service.getBoardList();
+		
+//		System.out.println(boardList);   // 확인 완료
+//		글목록(List 객체)을 request 객체에 저장
+		
+		request.setAttribute("boardList", boardList);
+		
+		forward = new ActionForward();
+		forward.setPath("board/board_list.jsp");
+		forward.setRedirect(false);
+		
+		return forward;
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

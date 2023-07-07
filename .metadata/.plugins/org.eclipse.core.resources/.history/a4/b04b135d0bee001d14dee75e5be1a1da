@@ -1,0 +1,25 @@
+package vo;
+
+//페이징 처리에 사용되는 정보
+public class PageInfo {
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
