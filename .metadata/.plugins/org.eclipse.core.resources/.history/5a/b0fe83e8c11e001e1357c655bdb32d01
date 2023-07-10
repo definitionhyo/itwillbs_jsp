@@ -1,0 +1,61 @@
+package jsp15_java_mail;
+
+import java.io.IOException;
+import java.util.Properties;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/SendMailPro")
+public class SendMailProServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//		System.out.println("SendMailProServlet");
+		
+		request.setCharacterEncoding("UTF-8");
+		String sender = request.getParameter("sender");
+		String receiver = request.getParameter("receiver");
+		String title = request.getParameter("title");
+		String content = request.getParameter("content");
+//		System.out.println(sender + ", " +  receiver + ", " + title + ", " + content);
+		
+		Properties properties = System.getProperties();
+		
+		properties.put("", "");
+		
+		
+		
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

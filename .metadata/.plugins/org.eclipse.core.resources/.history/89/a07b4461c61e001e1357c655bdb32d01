@@ -1,0 +1,69 @@
+package jsp15_java_mail;
+
+import java.io.IOException;
+import java.net.Authenticator;
+import java.util.Properties;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/SendMailPro")
+public class SendMailProServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//		System.out.println("SendMailProServlet");
+		
+		request.setCharacterEncoding("UTF-8");
+		String sender = request.getParameter("sender");
+		String receiver = request.getParameter("receiver");
+		String title = request.getParameter("title");
+		String content = request.getParameter("content");
+//		System.out.println(sender + ", " +  receiver + ", " + title + ", " + content);
+		
+		Properties properties = System.getProperties();
+		
+		properties.put("mail.smtp.host", "smtp.gmail.com");
+		properties.put("mail.smtp.auth", "true");
+		properties.put("mail.smtp.port", "587");
+		properties.put("mail.smtp.starttls.enable", "true");
+		properties.put("mail.smtp.ssl.protocols", "TLSv1.2");
+//		properties.put("mail.sntp.ssl.trust", "smtp.gmail.com");
+		
+		Authenticator authenticator = new GoogleMailAuthenticator();
+		
+		
+		
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

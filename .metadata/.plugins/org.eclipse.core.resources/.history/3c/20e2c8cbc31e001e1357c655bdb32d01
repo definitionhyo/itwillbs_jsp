@@ -1,0 +1,8 @@
+package jsp15_java_mail;
+
+import javax.mail.Authenticator;
+
+public class GoogleMailAuthenticator extends Authenticator {
+
+
+}

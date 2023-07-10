@@ -152,11 +152,11 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="D:\Shared\JSP\workspace_jsp5\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ROOT" path="" reloadable="false"/><Context docBase="D:\Shared\JSP\workspace_jsp5\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\MVC_Board" path="/MVC_Board" reloadable="true" source="org.eclipse.jst.jee.server:MVC_Board">
+      <Context docBase="C:\Users\user\Documents\workspace_jsp5\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ROOT" path="" reloadable="false"/><Context docBase="C:\Users\user\Documents\workspace_jsp5\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\MVC_Board" path="/MVC_Board" reloadable="true" source="org.eclipse.jst.jee.server:MVC_Board">
 	<Resource auth="Container" driverClassName="com.mysql.cj.jdbc.Driver" maxTotal="100" name="jdbc/MySQL" password="1234" type="javax.sql.DataSource" url="jdbc:mysql://localhost:3306/mvc_board5" username="root"/>
-</Context><Context docBase="D:\Shared\JSP\workspace_jsp5\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\StudyJSP" path="/StudyJSP" reloadable="true" source="org.eclipse.jst.jee.server:StudyJSP">
+</Context><Context docBase="C:\Users\user\Documents\workspace_jsp5\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\StudyJSP" path="/StudyJSP" reloadable="true" source="org.eclipse.jst.jee.server:StudyJSP">
 	<Resource auth="Container" driverClassName="com.mysql.cj.jdbc.Driver" maxTotal="100" name="jdbc/MySQL" password="1234" type="javax.sql.DataSource" url="jdbc:mysql://localhost:3306/study_jsp5" username="root"/>
-</Context><Context docBase="D:\Shared\JSP\workspace_jsp5\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\StudyJavascript" path="/StudyJavascript" reloadable="true" source="org.eclipse.jst.jee.server:StudyJavascript"/></Host>
+</Context><Context docBase="C:\Users\user\Documents\workspace_jsp5\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\StudyJavascript" path="/StudyJavascript" reloadable="true" source="org.eclipse.jst.jee.server:StudyJavascript"/></Host>
     </Engine>
   </Service>
 </Server>

@@ -1,0 +1,12 @@
+package jsp15_java_mail;
+
+import javax.mail.Authenticator;
+
+public class GoogleMailAuthenticator extends Authenticator {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
